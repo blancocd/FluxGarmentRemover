@@ -1,0 +1,58 @@
+import numpy as np
+import cv2
+
+fourddress_palette = np.array([
+    [255., 128.,   0.],   # 0 hair
+    [128., 128., 128.],   # 1 body
+    [255.,   0.,   0.],   # 2 inner
+    [  0., 128., 255.],   # 3 outer
+    [  0., 255.,   0.],   # 4 pants
+    [128.,   0., 255.]    # 5 shoes
+])
+
+def remove_unconn(mask, min_component_area = 20):
+    num_labels, labels, stats, centroids = cv2.connectedComponentsWithStats(mask, connectivity=8)
+    filtered_mask = np.zeros_like(mask)
+
+    for i in range(1, num_labels):
+        area = stats[i, cv2.CC_STAT_AREA]
+        if area >= min_component_area:
+            filtered_mask[labels == i] = 255
+    
+    mask = filtered_mask 
+    return mask
+
+def get_mask_from_seg_fn(segmentation_map, target_colors, avoid_colors, tolerance=5, dil_its=7, ero_its = 2) -> np.ndarray:
+    mask = np.zeros(segmentation_map.shape[:2], dtype=np.uint8)
+
+    for target in target_colors:
+        close = np.all(np.abs(segmentation_map - target) <= tolerance, axis=-1)
+        mask = np.logical_or(mask, close)
+
+    mask = (mask * 255).astype(np.uint8)
+    mask = remove_unconn(mask)
+    mask = cv2.dilate(mask, np.ones((5, 5), np.uint8), iterations=dil_its)
+
+    # include for removing body from mask
+    body_mask = np.zeros(segmentation_map.shape[:2], dtype=np.uint8)
+    for avoid in avoid_colors:
+        close = np.all(np.abs(segmentation_map - avoid) <= tolerance, axis=-1)
+        body_mask = np.logical_or(body_mask, close)
+    body_mask = (body_mask * 255).astype(np.uint8)
+    body_mask = cv2.erode(body_mask, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3)), iterations=ero_its)
+    mask = np.logical_and(mask, ~body_mask)
+    mask = mask.astype(np.float32)
+    return mask
+
+def get_mask_4ddress(segmentation_map, type, dil_its=7, ero_its = 2) -> np.ndarray:
+    target_colors = set()
+    if 'outer' in type:
+        target_colors.add(3)
+    elif 'upper' in type:
+        target_colors.update([2, 3])
+    elif 'lower' in type:
+        target_colors.add(4)
+    target_colors = [fourddress_palette[i] for i in target_colors]
+    avoid_colors = [fourddress_palette[i] for i in [0, 1]] # hair and body
+    mask = get_mask_from_seg_fn(segmentation_map, target_colors, avoid_colors, dil_its=dil_its, ero_its=ero_its)
+    return mask

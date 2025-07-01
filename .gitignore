@@ -1,0 +1,7 @@
+*.err
+*.out
+*.tar.gz
+*.pyc
+__pycache__
+*egg-info
+slurm/

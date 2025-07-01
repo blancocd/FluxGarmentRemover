@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flux_removes_garments"
+version = "0.1.0"
+description = "A project for using FluxKontext and FluxFill to remove outer garments."
+requires-python = ">=3.10"
+
+# Install these first:
+# pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu121
+# pip install git+https://github.com/huggingface/diffusers.git
+dependencies = [
+    "diffusers",
+    "huggingface-hub",
+    "numpy",
+    "opencv-python",
+    "Pillow",
+    "scikit-image",
+    "torch==2.5.1",
+    "torchaudio==2.5.1",
+    "torchvision==0.20.1",
+    "tqdm",
+    "transformers",
+    "sentencepiece",
+    "accelerate",
+    "protobuf"
+]
