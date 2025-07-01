@@ -122,7 +122,7 @@ def remove_garment_anchors(scan_dir, garment_type, prompt_flux_kontext, prompt_f
     pipe_fill = FluxFillPipeline.from_pretrained("black-forest-labs/FLUX.1-Fill-dev", torch_dtype=torch.bfloat16).to("cuda")
 
     vcomment(f"Starting {len(indices_list)} iterations to generate all views:")
-    for indices, indices_to_gen_save_flag in enumerate(zip(indices_list, indices_to_gen_save_flag_list)):
+    for indices, indices_to_gen_save_flag in zip(indices_list, indices_to_gen_save_flag_list):
         anchor_indices = [i for i, f in zip(indices, indices_to_gen_save_flag) if not f]
         indices_to_gen_save = [i for i, f in zip(indices, indices_to_gen_save_flag) if f]
         vcomment(f"Anchor indices {anchor_indices} will be used to generate {indices_to_gen_save}.")
