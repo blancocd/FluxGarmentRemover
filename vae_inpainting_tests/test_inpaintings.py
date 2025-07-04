@@ -42,13 +42,12 @@ if __name__ == '__main__':
     import random
     MAX_SEED = np.iinfo(np.int32).max
     input_image = transp_to_white(Image.open('/mnt/lustre/work/ponsmoll/pba534/ffgarments_datagen/data/4D-DRESS/00122_Outer/images/train_0000.png'))
+    mask_image = Image.new("L", (input_image.width, input_image.height), 0) # 0 for black
     for i in range(3):
         seed = random.randint(0, MAX_SEED)
         output = pipe(
             image=input_image,
-            strength=1.0, # Use full strength to see the maximum effect of the diffusion process
-            num_inference_steps=50,
-            reconstruction_test=True, # Ask for the latent comparison
+            mask_image=mask_image,
             generator=torch.Generator("cpu").manual_seed(seed),
         )
 

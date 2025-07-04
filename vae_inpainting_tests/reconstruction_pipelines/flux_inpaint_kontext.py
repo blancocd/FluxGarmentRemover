@@ -16,11 +16,11 @@ from transformers import (
     T5TokenizerFast,
 )
 
-from diffusers.image_processor import PipelineImageInput, VaeImageProcessor
-from diffusers.loaders import FluxIPAdapterMixin, FluxLoraLoaderMixin, FromSingleFileMixin, TextualInversionLoaderMixin
-from diffusers.models import AutoencoderKL, FluxTransformer2DModel
-from diffusers.schedulers import FlowMatchEulerDiscreteScheduler
-from diffusers.utils import (
+from ...image_processor import PipelineImageInput, VaeImageProcessor
+from ...loaders import FluxIPAdapterMixin, FluxLoraLoaderMixin, FromSingleFileMixin, TextualInversionLoaderMixin
+from ...models import AutoencoderKL, FluxTransformer2DModel
+from ...schedulers import FlowMatchEulerDiscreteScheduler
+from ...utils import (
     USE_PEFT_BACKEND,
     is_torch_xla_available,
     logging,
@@ -28,9 +28,9 @@ from diffusers.utils import (
     scale_lora_layers,
     unscale_lora_layers,
 )
-from diffusers.utils.torch_utils import randn_tensor
-from diffusers.pipelines.pipeline_utils import DiffusionPipeline
-from diffusers.pipelines.flux.pipeline_output import FluxPipelineOutput
+from ...utils.torch_utils import randn_tensor
+from ..pipeline_utils import DiffusionPipeline
+from .pipeline_output import FluxPipelineOutput
 
 
 if is_torch_xla_available():
@@ -950,7 +950,6 @@ class FluxKontextInpaintPipeline(
         max_sequence_length: int = 512,
         max_area: int = 1024**2,
         _auto_resize: bool = True,
-        reconstruction_test: bool = False,
     ):
         r"""
         Function invoked when calling the pipeline for generation.
@@ -1091,26 +1090,6 @@ class FluxKontextInpaintPipeline(
         height = height or self.default_sample_size * self.vae_scale_factor
         width = width or self.default_sample_size * self.vae_scale_factor
 
-        if reconstruction_test:
-            if image is None:
-                raise ValueError("An `image` must be provided for reconstruction_test.")
-            prompt = ""
-            prompt_2 = ""
-            negative_prompt = ""
-            negative_prompt_2 = ""
-            guidance_scale = 0.0
-            true_cfg_scale = 1.0
-            
-            # Create a black mask automatically
-            # Determine image size from input
-            if isinstance(image, PIL.Image.Image):
-                img_w, img_h = image.size
-            elif isinstance(image, torch.Tensor):
-                img_h, img_w = image.shape[-2:]
-            else: # Fallback
-                img_h, img_w = height, width
-            mask_image = PIL.Image.new("L", (img_w, img_h), 0) # 0 for black
-
         original_height, original_width = height, width
         aspect_ratio = width / height
         width = round((max_area * aspect_ratio) ** 0.5)
@@ -1187,14 +1166,11 @@ class FluxKontextInpaintPipeline(
 
         init_image = image.to(dtype=torch.float32)
 
-        reconstructed_image = None
-        encoded_latents = None
-        if reconstruction_test:
-            init_image_vae = init_image.to(device=self._execution_device, dtype=self.vae.dtype)
-            encoded_latents = self._encode_vae_image(image=init_image_vae, generator=generator)
-            reconstructed_latents_for_decode = (encoded_latents / self.vae.config.scaling_factor) + self.vae.config.shift_factor
-            reconstructed_image_decoded = self.vae.decode(reconstructed_latents_for_decode, return_dict=False)[0]
-            reconstructed_image = self.image_processor.postprocess(reconstructed_image_decoded, output_type="pil")[0]
+        init_image_vae = init_image.to(device=self._execution_device, dtype=self.vae.dtype)
+        encoded_latents = self._encode_vae_image(image=init_image_vae, generator=generator)
+        reconstructed_latents_for_decode = (encoded_latents / self.vae.config.scaling_factor) + self.vae.config.shift_factor
+        reconstructed_image_decoded = self.vae.decode(reconstructed_latents_for_decode, return_dict=False)[0]
+        reconstructed_image = self.image_processor.postprocess(reconstructed_image_decoded, output_type="pil")[0]
 
 
         # 2.1 Preprocess image_reference
@@ -1489,16 +1465,15 @@ class FluxKontextInpaintPipeline(
         if not return_dict:
             return (image,)
         
-        if reconstruction_test:
-            # We need the "packed" version of the original latents to be comparable
-            packed_encoded_latents = self._pack_latents(
-                encoded_latents, 1, num_channels_latents, height, width
-            )
-            return {
-                "denoised_image": image,
-                "reconstructed_image": reconstructed_image,
-                "denoised_latents": final_denoised_latents,
-                "encoded_latents": packed_encoded_latents,
-            }
+        # We need the "packed" version of the original latents to be comparable
+        packed_encoded_latents = self._pack_latents(
+            encoded_latents, 1, num_channels_latents, height, width
+        )
+        return {
+            "denoised_image": image,
+            "reconstructed_image": reconstructed_image,
+            "denoised_latents": final_denoised_latents,
+            "encoded_latents": packed_encoded_latents,
+        }
 
-        return FluxPipelineOutput(images=image)
+        # return FluxPipelineOutput(images=image)
