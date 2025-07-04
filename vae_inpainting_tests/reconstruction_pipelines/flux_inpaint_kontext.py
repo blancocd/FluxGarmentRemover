@@ -1464,14 +1464,13 @@ class FluxKontextInpaintPipeline(
             return (image,)
         
         # We need the "packed" version of the original latents to be comparable
-        packed_encoded_latents = self._pack_latents(
-            encoded_latents, 1, num_channels_latents, height, width
-        )
+        latents = self._unpack_latents(latents, height, width, self.vae_scale_factor)
+        latents = (latents / self.vae.config.scaling_factor) + self.vae.config.shift_factor
         return {
             "denoised_image": image,
             "reconstructed_image": reconstructed_image,
             "denoised_latents": latents,
-            "encoded_latents": packed_encoded_latents,
+            "encoded_latents": encoded_latents,
         }
 
         # return FluxPipelineOutput(images=image)
