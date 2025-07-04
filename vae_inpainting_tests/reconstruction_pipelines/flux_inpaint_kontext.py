@@ -1449,8 +1449,6 @@ class FluxKontextInpaintPipeline(
 
         self._current_timestep = None
 
-        final_denoised_latents = latents
-
         if output_type == "latent":
             image = latents
         else:
@@ -1472,7 +1470,7 @@ class FluxKontextInpaintPipeline(
         return {
             "denoised_image": image,
             "reconstructed_image": reconstructed_image,
-            "denoised_latents": final_denoised_latents,
+            "denoised_latents": latents,
             "encoded_latents": packed_encoded_latents,
         }
 
