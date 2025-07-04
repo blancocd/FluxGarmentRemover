@@ -164,8 +164,8 @@ def remove_garment_anchors(scan_dir, garment_type, prompt_flux_kontext, prompt_f
         del gen_concat_images; gc.collect(); torch.cuda.empty_cache()
 
 
-scan_dir = 'your_scan_dir'
-garment_type = 'upper'
+scan_dir = '/mnt/lustre/work/ponsmoll/pba870/shared/00122_Outer/'
+garment_type = 'outer'
 prompt_flux_kontext = 'remove the outer garment'
 prompt_flux_fill = 'white long sleeve shirt'
 seed_flux_kontext = 0
