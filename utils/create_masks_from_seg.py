@@ -2,13 +2,14 @@ import numpy as np
 import cv2
 
 fourddress_palette = np.array([
-    [255., 128.,   0.],   # 0 hair
-    [128., 128., 128.],   # 1 body
-    [255.,   0.,   0.],   # 2 inner
-    [  0., 128., 255.],   # 3 outer
-    [  0., 255.,   0.],   # 4 pants
-    [128.,   0., 255.]    # 5 shoes
+    [128., 128., 128.],   # 0 skin
+    [255., 128.,   0.],   # 1 hair
+    [128.,   0., 255.]    # 2 shoes
+    [255.,   0.,   0.],   # 3 inner
+    [  0., 255.,   0.],   # 4 lower
+    [  0., 128., 255.],   # 5 outer
 ])
+
 
 def remove_unconn(mask, min_component_area = 20):
     num_labels, labels, stats, centroids = cv2.connectedComponentsWithStats(mask, connectivity=8)
@@ -47,9 +48,9 @@ def get_mask_from_seg_fn(segmentation_map, target_colors, avoid_colors, toleranc
 def get_mask_4ddress(segmentation_map, type, dil_its=7, ero_its = 2) -> np.ndarray:
     target_colors = set()
     if 'outer' in type:
-        target_colors.add(3)
+        target_colors.add(5)
     elif 'upper' in type:
-        target_colors.update([2, 3])
+        target_colors.update([3, 5])
     elif 'lower' in type:
         target_colors.add(4)
     target_colors = [fourddress_palette[i] for i in target_colors]
