@@ -61,11 +61,10 @@ def get_reconstruction_metrics(name: str, image_fn: str, pipe, image_size: int, 
 
     return psnr, ssim
 
-def main(pipe_idx):
+def main(data_dir, pipe_idx):
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print(f"Using device: {device}")
 
-    data_dir = '/mnt/lustre/work/ponsmoll/pba534/ffgarments_datagen/data/4D-DRESS/'
     scan_dirs = sorted([d for d in os.listdir(data_dir) if os.path.isdir(os.path.join(data_dir, d))])
 
     dtypes = [torch.float16, torch.bfloat16, torch.bfloat16]
@@ -100,5 +99,6 @@ if __name__ == "__main__":
         print("Usage: python test_vaes.py <pipe_idx>")
         print("Example: python test_vaes.py 0")
         sys.exit(1)
-    pipe_idx = int(sys.argv[1])
-    main(pipe_idx)
+    data_dir = sys.argv[1]
+    pipe_idx = int(sys.argv[2])
+    main(data_dir, pipe_idx)

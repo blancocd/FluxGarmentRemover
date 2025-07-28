@@ -8,3 +8,4 @@ slurm/
 inpainting_tests/
 flux_test_imgs/
 my_script*
+script_vae*

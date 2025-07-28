@@ -175,7 +175,6 @@ def get_initial_anchor_idx(scan_dir, img_fns):
     return count_inner_pixels.index(highest_count)
 
 '''
-scan_dir = '/mnt/lustre/work/ponsmoll/pba870/shared/00122_Outer/'
 garment_type = 'upper'
 prompt_flux_kontext = 'remove the outer garment'
 prompt_flux_fill = 'white long sleeve shirt'

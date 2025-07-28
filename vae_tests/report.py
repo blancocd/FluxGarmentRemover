@@ -5,9 +5,9 @@ import os
 import matplotlib.pyplot as plt
 
 json_files = [
-    "/mnt/lustre/work/ponsmoll/pba534/ffgarments/vae_tests/vae_flux_fill_results.json",
-    "/mnt/lustre/work/ponsmoll/pba534/ffgarments/vae_tests/vae_flux_kontext_results.json",
-    "/mnt/lustre/work/ponsmoll/pba534/ffgarments/vae_tests/vae_sdxl_results.json"
+    "./vae_flux_fill_results.json",
+    "./vae_tests/vae_flux_kontext_results.json",
+    "./vae_tests/vae_sdxl_results.json"
 ]
 
 def load_json_data(filename):
