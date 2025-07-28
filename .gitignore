@@ -6,3 +6,5 @@ __pycache__
 *egg-info
 slurm/
 inpainting_tests/
+flux_test_imgs/
+my_script*

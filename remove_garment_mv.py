@@ -146,7 +146,7 @@ def remove_garment_anchors(scan_dir, garment_type, prompt_flux_kontext, prompt_f
         vcomment("Concatenated views.")
 
         # Get mask of concatenated anchor images according to type(s) of inpainting
-        mask = get_mask_4ddress(concat_seg, garment_type, dil_its=dil_its, ero_its=ero_its)
+        mask = get_mask_4ddress(concat_seg, garment_type, dil_its=dil_its, ero_its=ero_its).astype(np.float32)
 
         vcomment(f"Mask of type(s): {garment_type} is ready for concatenated views.")
 
@@ -164,22 +164,34 @@ def remove_garment_anchors(scan_dir, garment_type, prompt_flux_kontext, prompt_f
         del gen_concat_images; gc.collect(); torch.cuda.empty_cache()
 
 
+def get_initial_anchor_idx(scan_dir, img_fns):
+    count_inner_pixels = []
+    for img_fn in img_fns:
+        seg_path = os.path.join(scan_dir, 'segmentation_masks', img_fn)
+        seg_map = np.array(Image.open(seg_path).convert('RGB'))
+        inner_mask = get_mask_4ddress(seg_map, 'inner', dil_its=0, ero_its=None)
+        count_inner_pixels.append(inner_mask.sum())
+    highest_count = max(count_inner_pixels)
+    return count_inner_pixels.index(highest_count)
+
+'''
 scan_dir = '/mnt/lustre/work/ponsmoll/pba870/shared/00122_Outer/'
-garment_type = 'outer'
+garment_type = 'upper'
 prompt_flux_kontext = 'remove the outer garment'
 prompt_flux_fill = 'white long sleeve shirt'
 seed_flux_kontext = 0
 seed_flux_fill = 0
 
 img_dir = os.path.join(scan_dir, 'images')
-num_views = len([f for f in os.listdir(img_dir) if f.endswith('.png') and f.startswith('train')])
-initial_anchor_idx = 0
+img_fns = sorted([f for f in os.listdir(img_dir) if f.endswith('.png') and f.startswith('train')])
+num_views = len(img_fns)
+initial_anchor_idx = get_initial_anchor_idx(scan_dir, img_fns)
 
 indices_list, indices_to_gen_save_flag_list = get_sweeping_anchors_indices(initial_anchor_idx, num_views)
 
-# initial_anchor_idx = 0
 # num_anchors = 4
 # indices_list, indices_to_gen_save_flag_list = get_equally_spaced_anchors_indices(initial_anchor_idx, num_views, num_anchors)
 remove_garment_anchors(scan_dir, garment_type, prompt_flux_kontext, prompt_flux_fill, 
                        initial_anchor_idx, indices_list, indices_to_gen_save_flag_list,
                        seed_flux_kontext=seed_flux_kontext, seed_flux_fill=seed_flux_fill, verbose = True)
+'''
