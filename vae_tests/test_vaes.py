@@ -95,9 +95,8 @@ def main(data_dir, pipe_idx):
         json.dump(results, f, indent=2)
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: python test_vaes.py <pipe_idx>")
-        print("Example: python test_vaes.py 0")
+    if len(sys.argv) != 3:
+        print("Usage: python test_vaes.py <data_dir> <pipe_idx>")
         sys.exit(1)
     data_dir = sys.argv[1]
     pipe_idx = int(sys.argv[2])
