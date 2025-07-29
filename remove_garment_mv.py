@@ -11,8 +11,8 @@ import numpy as np
 from diffusers import FluxKontextPipeline, FluxFillPipeline
 import torch
 
-token = os.getenv("HUGGINGFACE_TOKEN")
-login(token=token)
+# token = os.getenv("HUGGINGFACE_TOKEN")
+# login(token=token)
 
 import random
 MAX_SEED = np.iinfo(np.int32).max
