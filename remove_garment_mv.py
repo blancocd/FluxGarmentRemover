@@ -17,8 +17,16 @@ import torch
 import random
 MAX_SEED = np.iinfo(np.int32).max
 
+def disabled_safety_checker(images, clip_input):
+    if len(images.shape)==4:
+        num_images = images.shape[0]
+        return images, [False]*num_images
+    else:
+        return images, False
+
 def remove_garment_kontext(image, prompt, seed = None):
-    pipe_kontext = FluxKontextPipeline.from_pretrained("black-forest-labs/FLUX.1-Kontext-dev", torch_dtype=torch.bfloat16).to("cuda")
+    pipe_kontext = FluxKontextPipeline.from_pretrained("black-forest-labs/FLUX.1-Kontext-dev", torch_dtype=torch.bfloat16, safety_checker=None).to("cuda")
+    pipe_kontext.safety_checker = disabled_safety_checker
     h, w = (image.height, image.width) if isinstance(image, Image.Image) else (image.shape[0], image.shape[1])
     seed =  seed or random.randint(0, MAX_SEED)
     print(f'Flux Kontext seed is {seed}')
@@ -119,7 +127,8 @@ def remove_garment_anchors(scan_dir, garment_type, prompt_flux_kontext, prompt_f
     del gen_front_view_img; gc.collect(); torch.cuda.empty_cache()
 
     # Load FluxFill pipeline
-    pipe_fill = FluxFillPipeline.from_pretrained("black-forest-labs/FLUX.1-Fill-dev", torch_dtype=torch.bfloat16).to("cuda")
+    pipe_fill = FluxFillPipeline.from_pretrained("black-forest-labs/FLUX.1-Fill-dev", torch_dtype=torch.bfloat16, safety_checker=None).to("cuda")
+    pipe_fill.safety_checker = disabled_safety_checker
 
     vcomment(f"Starting {len(indices_list)} iterations to generate all views:")
     for indices, indices_to_gen_save_flag in zip(indices_list, indices_to_gen_save_flag_list):
@@ -165,14 +174,16 @@ def remove_garment_anchors(scan_dir, garment_type, prompt_flux_kontext, prompt_f
 
 
 def get_initial_anchor_idx(scan_dir, img_fns):
-    count_inner_pixels = []
+    count_pixels = []
     for img_fn in img_fns:
         seg_path = os.path.join(scan_dir, 'segmentation_masks', img_fn)
         seg_map = np.array(Image.open(seg_path).convert('RGB'))
+        human_mask = get_mask_4ddress(seg_map, 'human', dil_its=0, ero_its=None)
+        skin_mask = get_mask_4ddress(seg_map, 'skin', dil_its=0, ero_its=None)
         inner_mask = get_mask_4ddress(seg_map, 'inner', dil_its=0, ero_its=None)
-        count_inner_pixels.append(inner_mask.sum())
-    highest_count = max(count_inner_pixels)
-    return count_inner_pixels.index(highest_count)
+        count_pixels.append(human_mask.sum()+2*skin_mask.sum()+inner_mask.sum())
+    highest_count = max(count_pixels)
+    return count_pixels.index(highest_count)
 
 '''
 garment_type = 'upper'

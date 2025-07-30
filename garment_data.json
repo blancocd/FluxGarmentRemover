@@ -1,170 +1,1072 @@
 {
     "00122_Outer": {
-        "seed": 1647444956,
-        "prompt": "remove the outer garment"
+        "anchor_idx": 0,
+        "outer": {
+            "seed": 1647444956,
+            "prompt": "remove the outer garment"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00123_Outer": {
-        "seed": 1744826179,
-        "prompt": "remove the outer garment"
+        "anchor_idx": 1,
+        "outer": {
+            "seed": 1744826179,
+            "prompt": "remove the outer garment"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00127_Outer": {
-        "seed": 66359611,
-        "prompt": "remove the outer garment"
+        "anchor_idx": 6,
+        "outer": {
+            "seed": 66359611,
+            "prompt": "remove the outer garment"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00129_Outer": {
-        "seed": 1383906073,
-        "prompt": "remove the white blazer"
+        "anchor_idx": 19,
+        "outer": {
+            "seed": 1383906073,
+            "prompt": "remove the white blazer"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00134_Outer": {
-        "seed": 638725291,
-        "prompt": "remove the outer garment"
+        "anchor_idx": 1,
+        "outer": {
+            "seed": 194795036,
+            "prompt": "remove the blue cardigan"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00135_Outer_1": {
-        "seed": 1623897599,
-        "prompt": "remove the outer garment"
+        "anchor_idx": 1,
+        "outer": {
+            "seed": 1623897599,
+            "prompt": "remove the outer garment"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00135_Outer_2": {
-        "seed": 2086106439,
-        "prompt": "remove the outer garment"
+        "anchor_idx": 1,
+        "outer": {
+            "seed": 2086106439,
+            "prompt": "remove the outer garment"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00136_Outer_1": {
-        "seed": 267201063,
-        "prompt": "remove the outer garment"
+        "anchor_idx": 1,
+        "outer": {
+            "seed": 267201063,
+            "prompt": "remove the outer garment"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00136_Outer_2": {
-        "seed": 2008443332,
-        "prompt": "remove the outer garment"
+        "anchor_idx": 1,
+        "outer": {
+            "seed": 2008443332,
+            "prompt": "remove the outer garment"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00137_Outer_1": {
-        "seed": 1464233038,
-        "prompt": "remove the outer garment"
+        "anchor_idx": 6,
+        "outer": {
+            "seed": 1464233038,
+            "prompt": "remove the outer garment"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00137_Outer_2": {
-        "seed": 228803092,
-        "prompt": "remove the outer garment"
+        "anchor_idx": 6,
+        "outer": {
+            "seed": 228803092,
+            "prompt": "remove the outer garment"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00140_Outer_1": {
-        "seed": 830066971,
-        "prompt": "remove the black jacket"
+        "anchor_idx": 8,
+        "outer": {
+            "seed": 830066971,
+            "prompt": "remove the black jacket"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00140_Outer_2": {
-        "seed": 1393491382,
-        "prompt": "remove the outer garment"
+        "anchor_idx": 8,
+        "outer": {
+            "seed": 1393491382,
+            "prompt": "remove the outer garment"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00147_Outer": {
-        "seed": 1298298265,
-        "prompt": "remove the white jacket"
+        "anchor_idx": 6,
+        "outer": {
+            "seed": 1298298265,
+            "prompt": "remove the white jacket"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00148_Outer": {
-        "seed": 1567290750,
-        "prompt": "remove the beige blazer"
+        "anchor_idx": 6,
+        "outer": {
+            "seed": 1567290750,
+            "prompt": "remove the beige blazer"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00149_Outer_1": {
-        "seed": 411390629,
-        "prompt": "remove the outer garment"
+        "anchor_idx": 7,
+        "outer": {
+            "seed": 411390629,
+            "prompt": "remove the outer garment"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00149_Outer_2": {
-        "seed": 2092251849,
-        "prompt": "remove the outer garment"
+        "anchor_idx": 6,
+        "outer": {
+            "seed": 2092251849,
+            "prompt": "remove the outer garment"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00151_Outer": {
-        "seed": 1103266723,
-        "prompt": "remove the jean jacket"
+        "anchor_idx": 6,
+        "outer": {
+            "seed": 1103266723,
+            "prompt": "remove the jean jacket"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00152_Outer_1": {
-        "seed": 1930817368,
-        "prompt": "remove the square-pattern shirt"
+        "anchor_idx": 6,
+        "outer": {
+            "seed": 1930817368,
+            "prompt": "remove the square-pattern shirt"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00152_Outer_2": {
-        "seed": 1731012091,
-        "prompt": "remove the outer garment"
+        "anchor_idx": 6,
+        "outer": {
+            "seed": 1731012091,
+            "prompt": "remove the outer garment"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00154_Outer_1": {
-        "seed": 158161535,
-        "prompt": "remove the outer garment"
+        "anchor_idx": 6,
+        "outer": {
+            "seed": 726850132,
+            "prompt": "remove the outer garment"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00154_Outer_2": {
-        "seed": 1231355324,
-        "prompt": "remove the outer garment"
+        "anchor_idx": 6,
+        "outer": {
+            "seed": 1231355324,
+            "prompt": "remove the outer garment"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00156_Outer": {
-        "seed": 1808773857,
-        "prompt": "remove the outer garment"
+        "anchor_idx": 18,
+        "outer": {
+            "seed": 1808773857,
+            "prompt": "remove the outer garment"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00160_Outer": {
-        "seed": 516781660,
-        "prompt": "remove the white jacket"
+        "anchor_idx": 6,
+        "outer": {
+            "seed": 516781660,
+            "prompt": "remove the white jacket"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00163_Outer": {
-        "seed": 589366347,
-        "prompt": "remove the outerjacket"
+        "anchor_idx": 6,
+        "outer": {
+            "seed": 589366347,
+            "prompt": "remove the outerjacket"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00167_Outer": {
-        "seed": 1884407048,
-        "prompt": "remove the outer garment"
+        "anchor_idx": 8,
+        "outer": {
+            "seed": 1884407048,
+            "prompt": "remove the outer garment"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00168_Outer_1": {
-        "seed": 1856835308,
-        "prompt": "remove the brown jacket"
+        "anchor_idx": 6,
+        "outer": {
+            "seed": 1856835308,
+            "prompt": "remove the brown jacket"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00168_Outer_2": {
-        "seed": 395427552,
-        "prompt": "remove the brown jacket"
+        "anchor_idx": 6,
+        "outer": {
+            "seed": 1909518082,
+            "prompt": "remove the brown cardigan"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00169_Outer": {
-        "seed": 846265932,
-        "prompt": "remove the outer garment"
+        "anchor_idx": 6,
+        "outer": {
+            "seed": 846265932,
+            "prompt": "remove the outer garment"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00170_Outer": {
-        "seed": 574135492,
-        "prompt": "remove the outer layer"
+        "anchor_idx": 6,
+        "outer": {
+            "seed": 574135492,
+            "prompt": "remove the outer layer"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00174_Outer": {
-        "seed": 1775109043,
-        "prompt": "remove the outer garment"
+        "anchor_idx": 7,
+        "outer": {
+            "seed": 1775109043,
+            "prompt": "remove the outer garment"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00175_Outer_1": {
-        "seed": 1107259467,
-        "prompt": "remove the red puffy jacket"
+        "anchor_idx": 1,
+        "outer": {
+            "seed": 1107259467,
+            "prompt": "remove the red puffy jacket"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00175_Outer_2": {
-        "seed": 619036634,
-        "prompt": "remove the red puffy jacket"
+        "anchor_idx": 1,
+        "outer": {
+            "seed": 619036634,
+            "prompt": "remove the red puffy jacket"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00176_Outer": {
-        "seed": 10893549,
-        "prompt": "remove the outer garment"
+        "anchor_idx": 1,
+        "outer": {
+            "seed": 10893549,
+            "prompt": "remove the outer garment"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00179_Outer": {
-        "seed": 372539894,
-        "prompt": "remove the gray jacket"
+        "anchor_idx": 6,
+        "outer": {
+            "seed": 372539894,
+            "prompt": "remove the gray jacket"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00180_Outer": {
-        "seed": 1208060296,
-        "prompt": "remove the outer garment"
+        "anchor_idx": 6,
+        "outer": {
+            "seed": 1208060296,
+            "prompt": "remove the outer garment"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00185_Outer_1": {
-        "seed": 1550291341,
-        "prompt": "remove the yellow puffy jacket"
+        "anchor_idx": 6,
+        "outer": {
+            "seed": 1550291341,
+            "prompt": "remove the yellow puffy jacket"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00185_Outer_2": {
-        "seed": 1833342168,
-        "prompt": "remove the yellow puffy jacket"
+        "anchor_idx": 6,
+        "outer": {
+            "seed": 1833342168,
+            "prompt": "remove the yellow puffy jacket"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00187_Outer": {
-        "seed": 923659542,
-        "prompt": "remove the outer garment"
+        "anchor_idx": 6,
+        "outer": {
+            "seed": 923659542,
+            "prompt": "remove the outer garment"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00188_Outer": {
-        "seed": 585324688,
-        "prompt": "remove the outer garment"
+        "anchor_idx": 6,
+        "outer": {
+            "seed": 1434280335,
+            "prompt": "remove the outer garment"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00190_Outer": {
-        "seed": 44526025,
-        "prompt": "remove the outer garment"
+        "anchor_idx": 6,
+        "outer": {
+            "seed": 44526025,
+            "prompt": "remove the outer garment"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     },
     "00191_Outer": {
-        "seed": 598657826,
-        "prompt": "remove the outer garment"
+        "anchor_idx": 6,
+        "outer": {
+            "seed": 2005718093,
+            "prompt": "remove the black cardigan"
+        },
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00122_Inner": {
+        "anchor_idx": 0,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00123_Inner": {
+        "anchor_idx": 1,
+        "inner": {
+            "seed": 1899460186,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00127_Inner": {
+        "anchor_idx": 6,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00129_Inner": {
+        "anchor_idx": 19,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00134_Inner": {
+        "anchor_idx": 1,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00135_Inner": {
+        "anchor_idx": 1,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00136_Inner": {
+        "anchor_idx": 1,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00137_Inner_1": {
+        "anchor_idx": 6,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00137_Inner_2": {
+        "anchor_idx": 6,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00140_Inner_1": {
+        "anchor_idx": 7,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00140_Inner_2": {
+        "anchor_idx": 7,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00147_Inner": {
+        "anchor_idx": 6,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00148_Inner": {
+        "anchor_idx": 6,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00149_Inner_1": {
+        "anchor_idx": 6,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00149_Inner_2": {
+        "anchor_idx": 6,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00151_Inner": {
+        "anchor_idx": 6,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00152_Inner": {
+        "anchor_idx": 6,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00154_Inner": {
+        "anchor_idx": 6,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00156_Inner": {
+        "anchor_idx": 1,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00160_Inner": {
+        "anchor_idx": 6,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00163_Inner_1": {
+        "anchor_idx": 6,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00163_Inner_2": {
+        "anchor_idx": 7,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00167_Inner": {
+        "anchor_idx": 9,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00168_Inner": {
+        "anchor_idx": 6,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00169_Inner": {
+        "anchor_idx": 6,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00170_Inner_1": {
+        "anchor_idx": 6,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00170_Inner_2": {
+        "anchor_idx": 6,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00174_Inner": {
+        "anchor_idx": 6,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00175_Inner_1": {
+        "anchor_idx": 1,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00175_Inner_2": {
+        "anchor_idx": 1,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00176_Inner": {
+        "anchor_idx": 1,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00179_Inner": {
+        "anchor_idx": 6,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00180_Inner": {
+        "anchor_idx": 6,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00185_Inner_1": {
+        "anchor_idx": 6,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00185_Inner_2": {
+        "anchor_idx": 6,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00187_Inner_1": {
+        "anchor_idx": 6,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00187_Inner_2": {
+        "anchor_idx": 6,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00188_Inner": {
+        "anchor_idx": 6,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00190_Inner": {
+        "anchor_idx": 6,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
+    },
+    "00191_Inner": {
+        "anchor_idx": 6,
+        "inner": {
+            "seed": -1,
+            "prompt": "remove inner garment"
+        },
+        "lower": {
+            "seed": -1,
+            "prompt": null
+        }
     }
 }

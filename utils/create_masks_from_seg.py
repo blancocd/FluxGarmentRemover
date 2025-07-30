@@ -48,6 +48,8 @@ def get_mask_from_segmap(segmentation_map, target_colors, avoid_colors, toleranc
 def get_mask_4ddress(segmentation_map, seg_label, dil_its=1, ero_its=1) -> np.ndarray:
     target_colors = set()
     if 'inner' in seg_label:
+        target_colors.add(0)
+    elif 'inner' in seg_label:
         target_colors.add(3)
     elif 'outer' in seg_label:
         target_colors.add(5)
