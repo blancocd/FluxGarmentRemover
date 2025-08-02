@@ -24,21 +24,22 @@ def disabled_safety_checker(images, clip_input):
     else:
         return images, False
 
-def remove_garment_kontext(image, prompt, seed = None):
-    pipe_kontext = FluxKontextPipeline.from_pretrained("black-forest-labs/FLUX.1-Kontext-dev", torch_dtype=torch.bfloat16, safety_checker=None).to("cuda")
-    pipe_kontext.safety_checker = disabled_safety_checker
+def remove_garment_kontext(pipe, image, prompt, neg_prompt=None, true_cfg_scale=1.0, num_inference_steps=28, guidance_scale=3.5, seed = None):
     h, w = (image.height, image.width) if isinstance(image, Image.Image) else (image.shape[0], image.shape[1])
     seed =  seed or random.randint(0, MAX_SEED)
     print(f'Flux Kontext seed is {seed}')
-    gen_image = pipe_kontext(
+    gen_image = pipe(
         image=image,
         prompt=prompt,
+        negative_prompt=neg_prompt,
+        true_cfg_scale=true_cfg_scale,
         height=h,
         width=w,
+        num_inference_steps=num_inference_steps,
+        guidance_scale=guidance_scale,
         generator=torch.Generator().manual_seed(seed)
     ).images[0]
     
-    del pipe_kontext
     torch.cuda.empty_cache()
     return gen_image
 
@@ -118,13 +119,17 @@ def remove_garment_anchors(scan_dir, garment_type, prompt_flux_kontext, prompt_f
     img_dir = os.path.join(scan_dir, 'images')
     img_fns = sorted([f for f in os.listdir(img_dir) if f.endswith('.png') and f.startswith('train')])
 
+    # Load FluxKontext
+    pipe_kontext = FluxKontextPipeline.from_pretrained("black-forest-labs/FLUX.1-Kontext-dev", torch_dtype=torch.bfloat16, safety_checker=None).to("cuda")
+    pipe_kontext.safety_checker = disabled_safety_checker
+
     # Remove garment from view with Flux Kontext. White bg works better with these models.
     front_view_img = transp_to_white(Image.open(os.path.join(scan_dir, 'images', img_fns[initial_anchor_idx])))
-    gen_front_view_img = remove_garment_kontext(front_view_img, prompt_flux_kontext, seed=seed_flux_kontext)
+    gen_front_view_img = remove_garment_kontext(pipe_kontext, front_view_img, prompt_flux_kontext, seed=seed_flux_kontext)
     gen_front_view_img.save(os.path.join(scan_dir, 'images', f'gen_{initial_anchor_idx:04d}.png'))
     save_new_segmap(scan_dir, initial_anchor_idx)
     vcomment(f'Removed garment from front view image: {initial_anchor_idx} and saved it.')
-    del gen_front_view_img; gc.collect(); torch.cuda.empty_cache()
+    del pipe_kontext; del gen_front_view_img; gc.collect(); torch.cuda.empty_cache()
 
     # Load FluxFill pipeline
     pipe_fill = FluxFillPipeline.from_pretrained("black-forest-labs/FLUX.1-Fill-dev", torch_dtype=torch.bfloat16, safety_checker=None).to("cuda")

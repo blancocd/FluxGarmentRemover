@@ -2,11 +2,21 @@ from PIL import Image
 from remove_garment_mv import remove_garment_kontext
 from utils.concat import transp_to_white
 import os
+import gc
 import sys
 import random
 import numpy as np
 import json
+from diffusers import FluxKontextPipeline
+import torch
 MAX_SEED = np.iinfo(np.int32).max
+
+def disabled_safety_checker(images, clip_input):
+    if len(images.shape)==4:
+        num_images = images.shape[0]
+        return images, [False]*num_images
+    else:
+        return images, False
 
 # Test the seeds and prompts that will be used for multiview generation.
 # First the front view image is copied, then the outer garment is removed for Outer scans
@@ -14,16 +24,22 @@ MAX_SEED = np.iinfo(np.int32).max
 # then the inner garment is removed and the generated image is saved as {scan_name}_inner.png
 # lastly, the lower garment is removed and the generated image is saved as {scan_name}_lower.png
 def main(dataset_dir, garment_data_json, index):
+    # garment_data_json = '/mnt/lustre/work/ponsmoll/pba534/ffgarments/garment_data.json'
     with open(garment_data_json, 'r') as f:
         garment_data = json.load(f)
 
     scan_names = list(garment_data.keys())
-    scan_name = scan_names[index-1]
+
+    mylist = []
+    for scan_name in scan_names:
+        if garment_data[scan_name]['inner']['seed'] == -1:
+            mylist.append(scan_name)
+
+    scan_name = mylist[index-1]
     scan_dict = garment_data[scan_name]
     print(f"Processing scan {scan_name} with index {index-1}.")
 
     copy_filename = f"./test_fkon/{scan_name}.png"
-    outer_filename = f"./test_fkon/{scan_name}_outer.png"
     if not os.path.isfile(copy_filename):
         scan_dir = os.path.join(dataset_dir, scan_name)
         initial_anchor_idx = scan_dict['anchor_idx']
@@ -32,41 +48,60 @@ def main(dataset_dir, garment_data_json, index):
         scan_image = transp_to_white(Image.open(image_path))
         scan_image.save(copy_filename)
 
-        if 'outer' not in scan_dict:
-            scan_image.save(outer_filename)
-        
+    # Load FluxKontext
+    pipe_kontext = FluxKontextPipeline.from_pretrained("black-forest-labs/FLUX.1-Kontext-dev", torch_dtype=torch.bfloat16, safety_checker=None).to("cuda")
+    pipe_kontext.safety_checker = disabled_safety_checker
+    outer_filename = f"./test_fkon/{scan_name}_outer.png"
     if not os.path.isfile(outer_filename):
         scan_image = Image.open(copy_filename)
-        prompt = scan_dict['outer']['prompt']
-        seed = scan_dict['outer']['seed']
-        seed = random.randint(0, MAX_SEED) if seed == -1 else seed
-        print(f'Will remove outer garment for {scan_name} with prompt {prompt} and seed {seed}.')
-        gen_image = remove_garment_kontext(scan_image, prompt, seed=seed)
-        outer_filename = f"./test_fkon/{scan_name}_outer_{seed}.png"
-        gen_image.save(outer_filename)
-        print(f"Generated image saved as {outer_filename}")
+        if 'outer' not in scan_dict:
+            scan_image.save(outer_filename)
+        else:
+            prompt = scan_dict['outer']['prompt']
+            seed = scan_dict['outer']['seed']
+            seed = random.randint(0, MAX_SEED) if seed == -1 else seed
+            print(f'Will remove outer garment for {scan_name} with prompt {prompt} and seed {seed}.')
+            gen_image = remove_garment_kontext(pipe_kontext, scan_image, prompt, seed=seed)
+            outer_filename = f"./test_fkon/{scan_name}_outer.png"
+            gen_image.save(outer_filename)
+            print(f"Generated image saved as {outer_filename}")
+            del gen_image; gc.collect(); torch.cuda.empty_cache()
         
-    # inner_filename = f"./test_fkon/{scan_name}_inner.png"
-    # if not os.path.isfile(inner_filename):
-    #     image_no_outer = Image.open(outer_filename)
-    #     prompt = scan_dict['inner']['prompt']
-    #     seed = scan_dict['inner']['seed']
-    #     seed = random.randint(0, MAX_SEED) if seed == -1 else seed
-    #     inner_filename = f"./test_fkon/{scan_name}_inner_{seed}.png"
-    #     print(f'Will remove inner garment for {scan_name} with prompt {prompt} and seed {seed}.')
-    #     gen_image = remove_garment_kontext(image_no_outer, prompt, seed=seed)
-    #     gen_image.save(inner_filename)
-    #     print(f"Generated image saved as {inner_filename}")
+    inner_filename = f"./test_fkon/{scan_name}_inner.png"
+    if not os.path.isfile(inner_filename):
+        image_no_outer = Image.open(outer_filename)
+        prompt = scan_dict['inner']['prompt']
+        neg_prompt = scan_dict['inner']['negative_prompt'] if 'negative_prompt' in scan_dict['inner'] else None
+        true_cfg_scale = scan_dict['inner']['true_cfg_scale'] if 'true_cfg_scale' in scan_dict['inner'] else 1.0
+        num_inference_steps = scan_dict['inner']['num_inference_steps'] if 'num_inference_steps' in scan_dict['inner'] else 28
+        guidance_scale = scan_dict['inner']['guidance_scale'] if 'guidance_scale' in scan_dict['inner'] else 3.5
+        seed = scan_dict['inner']['seed']
+        seed = random.randint(0, MAX_SEED) if seed == -1 else seed
+        print(f'Will remove inner garment for {scan_name} with prompt {prompt} and seed {seed}.')
+        gen_image = remove_garment_kontext(pipe_kontext, image_no_outer, prompt, neg_prompt=neg_prompt, 
+                                            true_cfg_scale=true_cfg_scale, num_inference_steps=num_inference_steps, 
+                                            guidance_scale=guidance_scale, seed=seed)
+        gen_image.save(inner_filename)
+        print(f"Generated image saved as {inner_filename}")
+        del gen_image; gc.collect(); torch.cuda.empty_cache()
+
 
     # lower_filename = f"./test_fkon/{scan_name}_lower.png"
     # if not os.path.isfile(lower_filename):
-    #     prompt = scan_dict['lower']['prompt']
-    #     seed = scan_dict['lower']['seed']
-    #     seed = random.randint(0, MAX_SEED) if seed == -1 else seed
-    #     print(f'Will remove lower garment for {scan_name} with prompt {prompt} and seed {seed}.')
-    #     gen_image = remove_garment_kontext(image, prompt, seed=seed)
-    #     gen_image.save(lower_filename)
-    #     print(f"Generated image saved as {lower_filename}")
+    #     image_no_inner = Image.open(inner_filename)
+    #     if 'lower' not in scan_dict:
+    #         image_no_inner.save(lower_filename)
+    #     else:
+    #         prompt = scan_dict['lower']['prompt']
+    #         for i in range(5):
+    #             seed = scan_dict['lower']['seed']
+    #             seed = random.randint(0, MAX_SEED) if seed == -1 else seed
+    #             lower_filename = f"./test_fkon/{scan_name}_{seed}_lower.png"
+    #             print(f'Will remove lower garment for {scan_name} with prompt {prompt} and seed {seed}.')
+    #             gen_image = remove_garment_kontext(pipe_kontext, image_no_inner, prompt, seed=seed)
+    #             gen_image.save(lower_filename)
+    #             print(f"Generated image saved as {lower_filename}")
+    #             del gen_image; gc.collect(); torch.cuda.empty_cache()
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:
