@@ -29,13 +29,7 @@ def main(dataset_dir, garment_data_json, index):
         garment_data = json.load(f)
 
     scan_names = list(garment_data.keys())
-
-    mylist = []
-    for scan_name in scan_names:
-        if garment_data[scan_name]['inner']['seed'] == -1:
-            mylist.append(scan_name)
-
-    scan_name = mylist[index-1]
+    scan_name = scan_names[index-1]
     scan_dict = garment_data[scan_name]
     print(f"Processing scan {scan_name} with index {index-1}.")
 
@@ -85,23 +79,6 @@ def main(dataset_dir, garment_data_json, index):
         print(f"Generated image saved as {inner_filename}")
         del gen_image; gc.collect(); torch.cuda.empty_cache()
 
-
-    # lower_filename = f"./test_fkon/{scan_name}_lower.png"
-    # if not os.path.isfile(lower_filename):
-    #     image_no_inner = Image.open(inner_filename)
-    #     if 'lower' not in scan_dict:
-    #         image_no_inner.save(lower_filename)
-    #     else:
-    #         prompt = scan_dict['lower']['prompt']
-    #         for i in range(5):
-    #             seed = scan_dict['lower']['seed']
-    #             seed = random.randint(0, MAX_SEED) if seed == -1 else seed
-    #             lower_filename = f"./test_fkon/{scan_name}_{seed}_lower.png"
-    #             print(f'Will remove lower garment for {scan_name} with prompt {prompt} and seed {seed}.')
-    #             gen_image = remove_garment_kontext(pipe_kontext, image_no_inner, prompt, seed=seed)
-    #             gen_image.save(lower_filename)
-    #             print(f"Generated image saved as {lower_filename}")
-    #             del gen_image; gc.collect(); torch.cuda.empty_cache()
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:

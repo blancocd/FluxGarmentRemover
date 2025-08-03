@@ -11,10 +11,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.0,
             "true_cfg_scale": 2.5
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00123_Outer": {
@@ -26,10 +22,6 @@
         "inner": {
             "seed": 1342898333,
             "prompt": "remove the shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00127_Outer": {
@@ -44,10 +36,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00129_Outer": {
@@ -59,10 +47,6 @@
         "inner": {
             "seed": 56814774,
             "prompt": "remove the long sleeve shirt to show sports bra and arms with a thin skinny build"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00134_Outer": {
@@ -78,10 +62,6 @@
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0,
             "num_inference_steps": 40
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00135_Outer_1": {
@@ -96,10 +76,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00135_Outer_2": {
@@ -114,10 +90,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00136_Outer_1": {
@@ -129,10 +101,6 @@
         "inner": {
             "seed": 1952468756,
             "prompt": "remove the shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00136_Outer_2": {
@@ -144,10 +112,6 @@
         "inner": {
             "seed": 754374272,
             "prompt": "remove the long sleeve shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00137_Outer_1": {
@@ -159,10 +123,6 @@
         "inner": {
             "seed": 999464018,
             "prompt": "remove the shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00137_Outer_2": {
@@ -174,10 +134,6 @@
         "inner": {
             "seed": 1957150254,
             "prompt": "remove the shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00140_Outer_1": {
@@ -189,10 +145,6 @@
         "inner": {
             "seed": 1505202067,
             "prompt": "remove the long sleeve shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00140_Outer_2": {
@@ -204,10 +156,6 @@
         "inner": {
             "seed": 742591956,
             "prompt": "remove the white top to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00147_Outer": {
@@ -219,10 +167,6 @@
         "inner": {
             "seed": 909427128,
             "prompt": "remove the shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00148_Outer": {
@@ -248,10 +192,6 @@
             "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00149_Outer_2": {
@@ -266,10 +206,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00151_Outer": {
@@ -281,10 +217,6 @@
         "inner": {
             "seed": 2067754041,
             "prompt": "remove the shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00152_Outer_1": {
@@ -296,10 +228,6 @@
         "inner": {
             "seed": 829685654,
             "prompt": "remove the shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00152_Outer_2": {
@@ -311,10 +239,6 @@
         "inner": {
             "seed": 1058196313,
             "prompt": "remove the shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00154_Outer_1": {
@@ -330,10 +254,6 @@
             "guidance_scale": 4.2,
             "true_cfg_scale": 2.0,
             "num_inference_steps": 36
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00154_Outer_2": {
@@ -348,10 +268,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.5
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00156_Outer": {
@@ -363,10 +279,6 @@
         "inner": {
             "seed": 1819107129,
             "prompt": "remove the blouse to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00160_Outer": {
@@ -381,10 +293,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00163_Outer": {
@@ -396,10 +304,6 @@
         "inner": {
             "seed": 167507592,
             "prompt": "remove the shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00167_Outer": {
@@ -411,10 +315,6 @@
         "inner": {
             "seed": 2016716032,
             "prompt": "remove the shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00168_Outer_1": {
@@ -429,10 +329,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00168_Outer_2": {
@@ -447,10 +343,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00169_Outer": {
@@ -465,10 +357,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00170_Outer": {
@@ -480,10 +368,6 @@
         "inner": {
             "seed": 805400360,
             "prompt": "remove the long sleeve shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00174_Outer": {
@@ -498,10 +382,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00175_Outer_1": {
@@ -516,10 +396,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00175_Outer_2": {
@@ -534,10 +410,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00176_Outer": {
@@ -549,10 +421,6 @@
         "inner": {
             "seed": 1457669582,
             "prompt": "remove the long sleeve shirt to show sports bra and arms with a thin skinny build"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00179_Outer": {
@@ -567,10 +435,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00180_Outer": {
@@ -585,10 +449,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00185_Outer_1": {
@@ -600,10 +460,6 @@
         "inner": {
             "seed": 1608174803,
             "prompt": "remove the long sleeve shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00185_Outer_2": {
@@ -615,10 +471,6 @@
         "inner": {
             "seed": 472069882,
             "prompt": "remove the long sleeve shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00187_Outer": {
@@ -644,10 +496,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.5
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00190_Outer": {
@@ -659,10 +507,6 @@
         "inner": {
             "seed": 1149699031,
             "prompt": "remove the shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00191_Outer": {
@@ -674,10 +518,6 @@
         "inner": {
             "seed": 1644116698,
             "prompt": "remove the shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00122_Inner": {
@@ -688,10 +528,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00123_Inner": {
@@ -699,10 +535,6 @@
         "inner": {
             "seed": 86633361,
             "prompt": "remove the shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00127_Inner": {
@@ -710,10 +542,6 @@
         "inner": {
             "seed": 1696996168,
             "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00129_Inner": {
@@ -721,10 +549,6 @@
         "inner": {
             "seed": 207519800,
             "prompt": "remove the white top to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00134_Inner": {
@@ -735,10 +559,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00135_Inner": {
@@ -749,10 +569,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00136_Inner": {
@@ -760,10 +576,6 @@
         "inner": {
             "seed": 956923127,
             "prompt": "remove the shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00137_Inner_1": {
@@ -771,10 +583,6 @@
         "inner": {
             "seed": 434937978,
             "prompt": "remove the shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00137_Inner_2": {
@@ -782,10 +590,6 @@
         "inner": {
             "seed": 895247976,
             "prompt": "remove the shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00140_Inner_1": {
@@ -793,10 +597,6 @@
         "inner": {
             "seed": 791709454,
             "prompt": "remove the shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00140_Inner_2": {
@@ -804,10 +604,6 @@
         "inner": {
             "seed": 1173042929,
             "prompt": "remove the white top to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00147_Inner": {
@@ -815,10 +611,6 @@
         "inner": {
             "seed": 1677534969,
             "prompt": "remove the shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00148_Inner": {
@@ -836,10 +628,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00149_Inner_2": {
@@ -850,10 +638,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00151_Inner": {
@@ -861,10 +645,6 @@
         "inner": {
             "seed": 1259610986,
             "prompt": "remove the shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00152_Inner": {
@@ -872,10 +652,6 @@
         "inner": {
             "seed": 1661762443,
             "prompt": "remove the shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00154_Inner": {
@@ -886,10 +662,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00156_Inner": {
@@ -897,10 +669,6 @@
         "inner": {
             "seed": 22458018,
             "prompt": "remove the shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00160_Inner": {
@@ -911,10 +679,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00163_Inner_1": {
@@ -922,10 +686,6 @@
         "inner": {
             "seed": 1122293324,
             "prompt": "remove the shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00163_Inner_2": {
@@ -933,10 +693,6 @@
         "inner": {
             "seed": 1786603360,
             "prompt": "remove the shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00167_Inner": {
@@ -944,10 +700,6 @@
         "inner": {
             "seed": 1739396961,
             "prompt": "remove the shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00168_Inner": {
@@ -958,10 +710,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00169_Inner": {
@@ -972,10 +720,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00170_Inner_1": {
@@ -983,10 +727,6 @@
         "inner": {
             "seed": 1653702087,
             "prompt": "remove the long sleeve shirt and vest to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00170_Inner_2": {
@@ -994,10 +734,6 @@
         "inner": {
             "seed": 1186525395,
             "prompt": "remove the long sleeve shirt and vest to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00174_Inner": {
@@ -1008,10 +744,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00175_Inner_1": {
@@ -1022,10 +754,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00175_Inner_2": {
@@ -1036,10 +764,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00176_Inner": {
@@ -1047,10 +771,6 @@
         "inner": {
             "seed": 583418698,
             "prompt": "remove the shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00179_Inner": {
@@ -1061,10 +781,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00180_Inner": {
@@ -1075,10 +791,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00185_Inner_1": {
@@ -1086,10 +798,6 @@
         "inner": {
             "seed": 405521851,
             "prompt": "remove the long sleeve shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00185_Inner_2": {
@@ -1097,10 +805,6 @@
         "inner": {
             "seed": 540342546,
             "prompt": "remove the long sleeve shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00187_Inner_1": {
@@ -1125,10 +829,6 @@
             "negative_prompt": "muscle, abs, strong",
             "guidance_scale": 4.5,
             "true_cfg_scale": 2.0
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show tight underwear"
         }
     },
     "00190_Inner": {
@@ -1136,10 +836,6 @@
         "inner": {
             "seed": 40743597,
             "prompt": "remove the sweater to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     },
     "00191_Inner": {
@@ -1147,10 +843,6 @@
         "inner": {
             "seed": 398511145,
             "prompt": "remove the shirt to show sports bra"
-        },
-        "lower": {
-            "seed": -1,
-            "prompt": "remove the lower garment to show underpants"
         }
     }
 }
