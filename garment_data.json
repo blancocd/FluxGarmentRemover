@@ -1,848 +1,1548 @@
 {
     "00122_Outer": {
         "anchor_idx": 0,
-        "outer": {
-            "seed": 1647444956,
-            "prompt": "remove the outer garment"
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 1647444956,
+                "prompt": "remove the outer garment"
+            },
+            "inner": {
+                "seed": 399388068,
+                "prompt": "remove the white long sleeve shirt to show a man's chest",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.0,
+                "true_cfg_scale": 2.5
+            }
         },
-        "inner": {
-            "seed": 399388068,
-            "prompt": "remove the white long sleeve shirt to show a man's chest",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.0,
-            "true_cfg_scale": 2.5
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "a white long sleeve shirt"
+            },
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00123_Outer": {
-        "anchor_idx": 1,
-        "outer": {
-            "seed": 1744826179,
-            "prompt": "remove the outer garment"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 1744826179,
+                "prompt": "remove the outer garment"
+            },
+            "inner": {
+                "seed": 1342898333,
+                "prompt": "remove the shirt to show sports bra"
+            }
         },
-        "inner": {
-            "seed": 1342898333,
-            "prompt": "remove the shirt to show sports bra"
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "shirt"
+            },
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00127_Outer": {
-        "anchor_idx": 6,
-        "outer": {
-            "seed": 66359611,
-            "prompt": "remove the outer garment"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 66359611,
+                "prompt": "remove the outer garment"
+            },
+            "inner": {
+                "seed": 491737803,
+                "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
         },
-        "inner": {
-            "seed": 491737803,
-            "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "top garment"
+            },
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00129_Outer": {
         "anchor_idx": 19,
-        "outer": {
-            "seed": 1383906073,
-            "prompt": "remove the white blazer"
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 1383906073,
+                "prompt": "remove the white blazer"
+            },
+            "inner": {
+                "seed": 56814774,
+                "prompt": "remove the long sleeve shirt to show sports bra and arms with a thin skinny build"
+            }
         },
-        "inner": {
-            "seed": 56814774,
-            "prompt": "remove the long sleeve shirt to show sports bra and arms with a thin skinny build"
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "long sleeve shirt"
+            },
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00134_Outer": {
-        "anchor_idx": 1,
-        "outer": {
-            "seed": 194795036,
-            "prompt": "remove the blue cardigan"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 194795036,
+                "prompt": "remove the blue cardigan"
+            },
+            "inner": {
+                "seed": 862282209,
+                "prompt": "remove the brown shirt to show a slim, thin, untoned front man's body",
+                "negative_prompt": "muscles, abs, strong, wide, big",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0,
+                "num_inference_steps": 40
+            }
         },
-        "inner": {
-            "seed": 862282209,
-            "prompt": "remove the brown shirt to show a slim, thin, untoned front man's body",
-            "negative_prompt": "muscles, abs, strong, wide, big",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0,
-            "num_inference_steps": 40
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "brown shirt"
+            },
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00135_Outer_1": {
-        "anchor_idx": 1,
-        "outer": {
-            "seed": 1623897599,
-            "prompt": "remove the outer garment"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 1623897599,
+                "prompt": "remove the outer garment"
+            },
+            "inner": {
+                "seed": 1281085588,
+                "prompt": "remove the blue sweater to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
         },
-        "inner": {
-            "seed": 1281085588,
-            "prompt": "remove the blue sweater to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "blue sweater"
+            },
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00135_Outer_2": {
-        "anchor_idx": 1,
-        "outer": {
-            "seed": 2086106439,
-            "prompt": "remove the outer garment"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 2086106439,
+                "prompt": "remove the outer garment"
+            },
+            "inner": {
+                "seed": 312448144,
+                "prompt": "remove the blue sweater to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
         },
-        "inner": {
-            "seed": 312448144,
-            "prompt": "remove the blue sweater to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "blue sweater"
+            },
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00136_Outer_1": {
-        "anchor_idx": 1,
-        "outer": {
-            "seed": 267201063,
-            "prompt": "remove the outer garment"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 267201063,
+                "prompt": "remove the outer garment"
+            },
+            "inner": {
+                "seed": 1952468756,
+                "prompt": "remove the shirt to show sports bra"
+            }
         },
-        "inner": {
-            "seed": 1952468756,
-            "prompt": "remove the shirt to show sports bra"
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "shirt"
+            },
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00136_Outer_2": {
-        "anchor_idx": 1,
-        "outer": {
-            "seed": 2008443332,
-            "prompt": "remove the outer garment"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 2008443332,
+                "prompt": "remove the outer garment"
+            },
+            "inner": {
+                "seed": 754374272,
+                "prompt": "remove the long sleeve shirt to show sports bra"
+            }
         },
-        "inner": {
-            "seed": 754374272,
-            "prompt": "remove the long sleeve shirt to show sports bra"
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "long sleeve shirt"
+            },
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00137_Outer_1": {
-        "anchor_idx": 6,
-        "outer": {
-            "seed": 1464233038,
-            "prompt": "remove the outer garment"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 1464233038,
+                "prompt": "remove the outer garment"
+            },
+            "inner": {
+                "seed": 638006128,
+                "prompt": "remove the shirt to show sports bra"
+            }
         },
-        "inner": {
-            "seed": 999464018,
-            "prompt": "remove the shirt to show sports bra"
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "shirt"
+            },
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00137_Outer_2": {
-        "anchor_idx": 6,
-        "outer": {
-            "seed": 228803092,
-            "prompt": "remove the outer garment"
+        "anchor_idx": 1,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 1360715436,
+                "prompt": "remove the outer garment"
+            },
+            "inner": {
+                "seed": 1957150254,
+                "prompt": "remove the shirt to show sports bra"
+            }
         },
-        "inner": {
-            "seed": 1957150254,
-            "prompt": "remove the shirt to show sports bra"
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "shirt"
+            },
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00140_Outer_1": {
-        "anchor_idx": 8,
-        "outer": {
-            "seed": 830066971,
-            "prompt": "remove the black jacket"
+        "anchor_idx": 19,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 830066971,
+                "prompt": "remove the black jacket"
+            },
+            "inner": {
+                "seed": 1505202067,
+                "prompt": "remove the long sleeve shirt to show sports bra"
+            }
         },
-        "inner": {
-            "seed": 1505202067,
-            "prompt": "remove the long sleeve shirt to show sports bra"
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "long sleeve shirt"
+            },
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00140_Outer_2": {
-        "anchor_idx": 8,
-        "outer": {
-            "seed": 1393491382,
-            "prompt": "remove the outer garment"
+        "anchor_idx": 19,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 1393491382,
+                "prompt": "remove the outer garment"
+            },
+            "inner": {
+                "seed": 742591956,
+                "prompt": "remove the white top to show sports bra"
+            }
         },
-        "inner": {
-            "seed": 742591956,
-            "prompt": "remove the white top to show sports bra"
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "white top"
+            },
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00147_Outer": {
-        "anchor_idx": 6,
-        "outer": {
-            "seed": 1298298265,
-            "prompt": "remove the white jacket"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 1298298265,
+                "prompt": "remove the white jacket"
+            },
+            "inner": {
+                "seed": 909427128,
+                "prompt": "remove the shirt to show sports bra"
+            }
         },
-        "inner": {
-            "seed": 909427128,
-            "prompt": "remove the shirt to show sports bra"
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "shirt"
+            },
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00148_Outer": {
-        "anchor_idx": 6,
-        "outer": {
-            "seed": 1567290750,
-            "prompt": "remove the beige blazer"
+        "anchor_idx": 1,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 1567290750,
+                "prompt": "remove the beige blazer"
+            },
+            "inner": {
+                "seed": 823666678,
+                "prompt": "remove the dress to show a sports bra and shorts",
+                "num_inference_steps": 36
+            }
         },
-        "inner": {
-            "seed": 823666678,
-            "prompt": "remove the dress to show a sports bra and shorts",
-            "num_inference_steps": 36
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "dress"
+            },
+            "inner": {
+                "prompt": "sports bra and shorts"
+            }
         }
     },
     "00149_Outer_1": {
-        "anchor_idx": 7,
-        "outer": {
-            "seed": 411390629,
-            "prompt": "remove the outer garment"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 411390629,
+                "prompt": "remove the outer garment"
+            },
+            "inner": {
+                "seed": 3902310,
+                "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.0
+            }
         },
-        "inner": {
-            "seed": 3902310,
-            "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.0
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "top garment"
+            },
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00149_Outer_2": {
-        "anchor_idx": 6,
-        "outer": {
-            "seed": 2092251849,
-            "prompt": "remove the outer garment"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 1733301897,
+                "prompt": "remove the outer garment"
+            },
+            "inner": {
+                "seed": 3902310,
+                "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
         },
-        "inner": {
-            "seed": 3902310,
-            "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "top garment"
+            },
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00151_Outer": {
-        "anchor_idx": 6,
-        "outer": {
-            "seed": 1103266723,
-            "prompt": "remove the jean jacket"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 1103266723,
+                "prompt": "remove the jean jacket"
+            },
+            "inner": {
+                "seed": 2067754041,
+                "prompt": "remove the shirt to show sports bra"
+            }
         },
-        "inner": {
-            "seed": 2067754041,
-            "prompt": "remove the shirt to show sports bra"
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "shirt"
+            },
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00152_Outer_1": {
-        "anchor_idx": 6,
-        "outer": {
-            "seed": 1930817368,
-            "prompt": "remove the square-pattern shirt"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 908430784,
+                "prompt": "remove the square-pattern shirt"
+            },
+            "inner": {
+                "seed": 598567361,
+                "prompt": "remove the shirt to show sports bra"
+            }
         },
-        "inner": {
-            "seed": 829685654,
-            "prompt": "remove the shirt to show sports bra"
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "shirt"
+            },
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00152_Outer_2": {
-        "anchor_idx": 6,
-        "outer": {
-            "seed": 1731012091,
-            "prompt": "remove the outer garment"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 1731012091,
+                "prompt": "remove the outer garment"
+            },
+            "inner": {
+                "seed": 1058196313,
+                "prompt": "remove the shirt to show sports bra"
+            }
         },
-        "inner": {
-            "seed": 1058196313,
-            "prompt": "remove the shirt to show sports bra"
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "shirt"
+            },
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00154_Outer_1": {
-        "anchor_idx": 6,
-        "outer": {
-            "seed": 726850132,
-            "prompt": "remove the outer garment"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 726850132,
+                "prompt": "remove the outer garment"
+            },
+            "inner": {
+                "seed": 1083015304,
+                "prompt": "remove the white shirt to show a man's chest",
+                "negative_prompt": "muscle, abs, strong, wide, big",
+                "guidance_scale": 4.2,
+                "true_cfg_scale": 2.0,
+                "num_inference_steps": 36
+            }
         },
-        "inner": {
-            "seed": 1083015304,
-            "prompt": "remove the white shirt to show a man's chest",
-            "negative_prompt": "muscle, abs, strong, wide, big",
-            "guidance_scale": 4.2,
-            "true_cfg_scale": 2.0,
-            "num_inference_steps": 36
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "white shirt"
+            },
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00154_Outer_2": {
-        "anchor_idx": 6,
-        "outer": {
-            "seed": 1231355324,
-            "prompt": "remove the outer garment"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 1231355324,
+                "prompt": "remove the outer garment"
+            },
+            "inner": {
+                "seed": 1003161925,
+                "prompt": "remove the white shirt to show a slender man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.5
+            }
         },
-        "inner": {
-            "seed": 2136418930,
-            "prompt": "remove the white shirt to show a slender man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.5
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "white shirt"
+            },
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00156_Outer": {
-        "anchor_idx": 18,
-        "outer": {
-            "seed": 1808773857,
-            "prompt": "remove the outer garment"
+        "anchor_idx": 2,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 1808773857,
+                "prompt": "remove the outer garment"
+            },
+            "inner": {
+                "seed": 1819107129,
+                "prompt": "remove the blouse to show sports bra"
+            }
         },
-        "inner": {
-            "seed": 1819107129,
-            "prompt": "remove the blouse to show sports bra"
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "blouse"
+            },
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00160_Outer": {
-        "anchor_idx": 6,
-        "outer": {
-            "seed": 516781660,
-            "prompt": "remove the white jacket"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 516781660,
+                "prompt": "remove the white jacket"
+            },
+            "inner": {
+                "seed": 733442216,
+                "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
         },
-        "inner": {
-            "seed": 733442216,
-            "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "top garment"
+            },
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00163_Outer": {
-        "anchor_idx": 6,
-        "outer": {
-            "seed": 589366347,
-            "prompt": "remove the outerjacket"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 589366347,
+                "prompt": "remove the outerjacket"
+            },
+            "inner": {
+                "seed": 167507592,
+                "prompt": "remove the shirt to show sports bra"
+            }
         },
-        "inner": {
-            "seed": 167507592,
-            "prompt": "remove the shirt to show sports bra"
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "shirt"
+            },
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00167_Outer": {
-        "anchor_idx": 8,
-        "outer": {
-            "seed": 1884407048,
-            "prompt": "remove the outer garment"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 1884407048,
+                "prompt": "remove the outer garment"
+            },
+            "inner": {
+                "seed": 41192580,
+                "prompt": "remove the shirt to show sports bra"
+            }
         },
-        "inner": {
-            "seed": 2016716032,
-            "prompt": "remove the shirt to show sports bra"
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "shirt"
+            },
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00168_Outer_1": {
-        "anchor_idx": 6,
-        "outer": {
-            "seed": 1856835308,
-            "prompt": "remove the brown jacket"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 933327660,
+                "prompt": "remove the brown jacket"
+            },
+            "inner": {
+                "seed": 1038845742,
+                "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
         },
-        "inner": {
-            "seed": 1038845742,
-            "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "top garment"
+            },
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00168_Outer_2": {
-        "anchor_idx": 6,
-        "outer": {
-            "seed": 1909518082,
-            "prompt": "remove the brown cardigan"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 1115954380,
+                "prompt": "remove the brown cardigan"
+            },
+            "inner": {
+                "seed": 1046534459,
+                "prompt": "remove the gray sweater to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
         },
-        "inner": {
-            "seed": 1046534459,
-            "prompt": "remove the gray sweater to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "gray sweater"
+            },
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00169_Outer": {
-        "anchor_idx": 6,
-        "outer": {
-            "seed": 846265932,
-            "prompt": "remove the outer garment"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 431597242,
+                "prompt": "remove the outer garment to show the sweater under"
+            },
+            "inner": {
+                "seed": 2089590529,
+                "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
         },
-        "inner": {
-            "seed": 2089590529,
-            "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "top garment"
+            },
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00170_Outer": {
-        "anchor_idx": 6,
-        "outer": {
-            "seed": 574135492,
-            "prompt": "remove the outer layer"
+        "anchor_idx": 1,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 406229906,
+                "prompt": "remove the outer layer"
+            },
+            "inner": {
+                "seed": 805400360,
+                "prompt": "remove the long sleeve shirt to show sports bra"
+            }
         },
-        "inner": {
-            "seed": 805400360,
-            "prompt": "remove the long sleeve shirt to show sports bra"
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "long sleeve shirt"
+            },
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00174_Outer": {
-        "anchor_idx": 7,
-        "outer": {
-            "seed": 1775109043,
-            "prompt": "remove the outer garment"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 1775109043,
+                "prompt": "remove the outer garment"
+            },
+            "inner": {
+                "seed": 1873002700,
+                "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
         },
-        "inner": {
-            "seed": 192585987,
-            "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "top garment"
+            },
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00175_Outer_1": {
-        "anchor_idx": 1,
-        "outer": {
-            "seed": 1107259467,
-            "prompt": "remove the red puffy jacket"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 283855613,
+                "prompt": "remove the red puffy jacket"
+            },
+            "inner": {
+                "seed": 840488037,
+                "prompt": "remove the blue sweater to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
         },
-        "inner": {
-            "seed": 840488037,
-            "prompt": "remove the blue sweater to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "blue sweater"
+            },
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00175_Outer_2": {
-        "anchor_idx": 1,
-        "outer": {
-            "seed": 619036634,
-            "prompt": "remove the red puffy jacket"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 619036634,
+                "prompt": "remove the red puffy jacket"
+            },
+            "inner": {
+                "seed": 2139373472,
+                "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
         },
-        "inner": {
-            "seed": 2139373472,
-            "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "top garment"
+            },
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00176_Outer": {
-        "anchor_idx": 1,
-        "outer": {
-            "seed": 10893549,
-            "prompt": "remove the outer garment"
+        "anchor_idx": 19,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 10893549,
+                "prompt": "remove the outer garment"
+            },
+            "inner": {
+                "seed": 1457669582,
+                "prompt": "remove the long sleeve shirt to show sports bra and arms with a thin skinny build"
+            }
         },
-        "inner": {
-            "seed": 1457669582,
-            "prompt": "remove the long sleeve shirt to show sports bra and arms with a thin skinny build"
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "long sleeve shirt"
+            },
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00179_Outer": {
-        "anchor_idx": 6,
-        "outer": {
-            "seed": 372539894,
-            "prompt": "remove the gray jacket"
+        "anchor_idx": 1,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 1565885046,
+                "prompt": "remove the gray jacket"
+            },
+            "inner": {
+                "seed": 394992759,
+                "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
         },
-        "inner": {
-            "seed": 394992759,
-            "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "top garment"
+            },
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00180_Outer": {
-        "anchor_idx": 6,
-        "outer": {
-            "seed": 1208060296,
-            "prompt": "remove the outer garment"
+        "anchor_idx": 1,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 1208060296,
+                "prompt": "remove the outer garment"
+            },
+            "inner": {
+                "seed": 111141804,
+                "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
         },
-        "inner": {
-            "seed": 111141804,
-            "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "top garment"
+            },
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00185_Outer_1": {
-        "anchor_idx": 6,
-        "outer": {
-            "seed": 1550291341,
-            "prompt": "remove the yellow puffy jacket"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 1550291341,
+                "prompt": "remove the yellow puffy jacket"
+            },
+            "inner": {
+                "seed": 1608174803,
+                "prompt": "remove the long sleeve shirt to show sports bra"
+            }
         },
-        "inner": {
-            "seed": 1608174803,
-            "prompt": "remove the long sleeve shirt to show sports bra"
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "long sleeve shirt"
+            },
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00185_Outer_2": {
-        "anchor_idx": 6,
-        "outer": {
-            "seed": 1833342168,
-            "prompt": "remove the yellow puffy jacket"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 1833342168,
+                "prompt": "remove the yellow puffy jacket"
+            },
+            "inner": {
+                "seed": 472069882,
+                "prompt": "remove the long sleeve shirt to show sports bra"
+            }
         },
-        "inner": {
-            "seed": 472069882,
-            "prompt": "remove the long sleeve shirt to show sports bra"
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "long sleeve shirt"
+            },
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00187_Outer": {
-        "anchor_idx": 6,
-        "outer": {
-            "seed": 923659542,
-            "prompt": "remove the outer garment"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 923659542,
+                "prompt": "remove the outer garment"
+            },
+            "inner": {
+                "seed": 2136540186,
+                "prompt": "remove the dress to show a slim body wearing a sports bra and shorts"
+            }
         },
-        "inner": {
-            "seed": 2136540186,
-            "prompt": "remove the dress to show a slim body wearing a sports bra and shorts"
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "dress"
+            },
+            "inner": {
+                "prompt": "sports bra and shorts"
+            }
         }
     },
     "00188_Outer": {
-        "anchor_idx": 6,
-        "outer": {
-            "seed": 1434280335,
-            "prompt": "remove the outer garment"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 1756534864,
+                "prompt": "remove the outer garment"
+            },
+            "inner": {
+                "seed": 1768169831,
+                "prompt": "remove the blue shirt to show a slender man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.5
+            }
         },
-        "inner": {
-            "seed": 1768169831,
-            "prompt": "remove the blue shirt to show a slender man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.5
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "blue shirt"
+            },
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00190_Outer": {
-        "anchor_idx": 6,
-        "outer": {
-            "seed": 44526025,
-            "prompt": "remove the outer garment"
+        "anchor_idx": 19,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 44526025,
+                "prompt": "remove the outer garment"
+            },
+            "inner": {
+                "seed": 1149699031,
+                "prompt": "remove the shirt to show sports bra"
+            }
         },
-        "inner": {
-            "seed": 1149699031,
-            "prompt": "remove the shirt to show sports bra"
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "shirt"
+            },
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00191_Outer": {
-        "anchor_idx": 6,
-        "outer": {
-            "seed": 2005718093,
-            "prompt": "remove the black cardigan"
+        "anchor_idx": 19,
+        "flux_kontext_args": {
+            "outer": {
+                "seed": 2005718093,
+                "prompt": "remove the black cardigan"
+            },
+            "inner": {
+                "seed": 1644116698,
+                "prompt": "remove the shirt to show sports bra"
+            }
         },
-        "inner": {
-            "seed": 1644116698,
-            "prompt": "remove the shirt to show sports bra"
+        "flux_fill_args": {
+            "outer": {
+                "prompt": "shirt"
+            },
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00122_Inner": {
         "anchor_idx": 0,
-        "inner": {
-            "seed": 1079854938,
-            "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 1290138156,
+                "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00123_Inner": {
-        "anchor_idx": 1,
-        "inner": {
-            "seed": 86633361,
-            "prompt": "remove the shirt to show sports bra"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 86633361,
+                "prompt": "remove the shirt to show sports bra"
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00127_Inner": {
-        "anchor_idx": 6,
-        "inner": {
-            "seed": 1696996168,
-            "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 1696996168,
+                "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame"
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00129_Inner": {
         "anchor_idx": 19,
-        "inner": {
-            "seed": 207519800,
-            "prompt": "remove the white top to show sports bra"
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 207519800,
+                "prompt": "remove the white top to show sports bra"
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00134_Inner": {
-        "anchor_idx": 1,
-        "inner": {
-            "seed": 128875021,
-            "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 128875021,
+                "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00135_Inner": {
-        "anchor_idx": 1,
-        "inner": {
-            "seed": 1488385412,
-            "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 1488385412,
+                "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00136_Inner": {
-        "anchor_idx": 1,
-        "inner": {
-            "seed": 956923127,
-            "prompt": "remove the shirt to show sports bra"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 956923127,
+                "prompt": "remove the shirt to show sports bra"
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00137_Inner_1": {
-        "anchor_idx": 6,
-        "inner": {
-            "seed": 434937978,
-            "prompt": "remove the shirt to show sports bra"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 434937978,
+                "prompt": "remove the shirt to show sports bra"
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00137_Inner_2": {
-        "anchor_idx": 6,
-        "inner": {
-            "seed": 895247976,
-            "prompt": "remove the shirt to show sports bra"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 895247976,
+                "prompt": "remove the shirt to show sports bra"
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00140_Inner_1": {
-        "anchor_idx": 7,
-        "inner": {
-            "seed": 791709454,
-            "prompt": "remove the shirt to show sports bra"
+        "anchor_idx": 19,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 791709454,
+                "prompt": "remove the shirt to show sports bra"
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00140_Inner_2": {
-        "anchor_idx": 7,
-        "inner": {
-            "seed": 1173042929,
-            "prompt": "remove the white top to show sports bra"
+        "anchor_idx": 19,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 1173042929,
+                "prompt": "remove the white top to show sports bra"
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00147_Inner": {
-        "anchor_idx": 6,
-        "inner": {
-            "seed": 1677534969,
-            "prompt": "remove the shirt to show sports bra"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 1677534969,
+                "prompt": "remove the shirt to show sports bra"
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00148_Inner": {
-        "anchor_idx": 6,
-        "inner": {
-            "seed": 1346868006,
-            "prompt": "remove the dress to show a slim body wearing a sports bra and shorts"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 1346868006,
+                "prompt": "remove the dress to show a slim body wearing a sports bra and shorts"
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "sports bra and shorts"
+            }
         }
     },
     "00149_Inner_1": {
-        "anchor_idx": 6,
-        "inner": {
-            "seed": 1619729312,
-            "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 1619729312,
+                "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00149_Inner_2": {
-        "anchor_idx": 6,
-        "inner": {
-            "seed": 145845357,
-            "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 145845357,
+                "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00151_Inner": {
-        "anchor_idx": 6,
-        "inner": {
-            "seed": 1259610986,
-            "prompt": "remove the shirt to show sports bra"
+        "anchor_idx": 1,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 1259610986,
+                "prompt": "remove the shirt to show sports bra"
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00152_Inner": {
-        "anchor_idx": 6,
-        "inner": {
-            "seed": 1661762443,
-            "prompt": "remove the shirt to show sports bra"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 1661762443,
+                "prompt": "remove the shirt to show sports bra"
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00154_Inner": {
-        "anchor_idx": 6,
-        "inner": {
-            "seed": 1427722271,
-            "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 2026976940,
+                "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00156_Inner": {
-        "anchor_idx": 1,
-        "inner": {
-            "seed": 22458018,
-            "prompt": "remove the shirt to show sports bra"
+        "anchor_idx": 19,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 22458018,
+                "prompt": "remove the shirt to show sports bra"
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00160_Inner": {
-        "anchor_idx": 6,
-        "inner": {
-            "seed": 1722600568,
-            "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 1722600568,
+                "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00163_Inner_1": {
-        "anchor_idx": 6,
-        "inner": {
-            "seed": 1122293324,
-            "prompt": "remove the shirt to show sports bra"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 1122293324,
+                "prompt": "remove the shirt to show sports bra"
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00163_Inner_2": {
-        "anchor_idx": 7,
-        "inner": {
-            "seed": 1786603360,
-            "prompt": "remove the shirt to show sports bra"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 1786603360,
+                "prompt": "remove the shirt to show sports bra"
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00167_Inner": {
-        "anchor_idx": 9,
-        "inner": {
-            "seed": 1739396961,
-            "prompt": "remove the shirt to show sports bra"
+        "anchor_idx": 19,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 1739396961,
+                "prompt": "remove the shirt to show sports bra"
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00168_Inner": {
-        "anchor_idx": 6,
-        "inner": {
-            "seed": 235821560,
-            "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 235821560,
+                "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00169_Inner": {
-        "anchor_idx": 6,
-        "inner": {
-            "seed": 1929766451,
-            "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "anchor_idx": 1,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 1929766451,
+                "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00170_Inner_1": {
-        "anchor_idx": 6,
-        "inner": {
-            "seed": 1653702087,
-            "prompt": "remove the long sleeve shirt and vest to show sports bra"
+        "anchor_idx": 1,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 1653702087,
+                "prompt": "remove the long sleeve shirt and vest to show sports bra"
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00170_Inner_2": {
-        "anchor_idx": 6,
-        "inner": {
-            "seed": 1186525395,
-            "prompt": "remove the long sleeve shirt and vest to show sports bra"
+        "anchor_idx": 1,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 1186525395,
+                "prompt": "remove the long sleeve shirt and vest to show sports bra"
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00174_Inner": {
-        "anchor_idx": 6,
-        "inner": {
-            "seed": 113664391,
-            "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "anchor_idx": 1,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 113664391,
+                "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00175_Inner_1": {
         "anchor_idx": 1,
-        "inner": {
-            "seed": 607213097,
-            "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 607213097,
+                "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00175_Inner_2": {
         "anchor_idx": 1,
-        "inner": {
-            "seed": 194467975,
-            "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 194467975,
+                "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00176_Inner": {
-        "anchor_idx": 1,
-        "inner": {
-            "seed": 583418698,
-            "prompt": "remove the shirt to show sports bra"
+        "anchor_idx": 19,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 583418698,
+                "prompt": "remove the shirt to show sports bra"
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00179_Inner": {
-        "anchor_idx": 6,
-        "inner": {
-            "seed": 1738985257,
-            "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 1738985257,
+                "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00180_Inner": {
-        "anchor_idx": 6,
-        "inner": {
-            "seed": 1890599721,
-            "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "anchor_idx": 1,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 1890599721,
+                "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00185_Inner_1": {
-        "anchor_idx": 6,
-        "inner": {
-            "seed": 405521851,
-            "prompt": "remove the long sleeve shirt to show sports bra"
+        "anchor_idx": 1,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 405521851,
+                "prompt": "remove the long sleeve shirt to show sports bra"
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00185_Inner_2": {
-        "anchor_idx": 6,
-        "inner": {
-            "seed": 540342546,
-            "prompt": "remove the long sleeve shirt to show sports bra"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 540342546,
+                "prompt": "remove the long sleeve shirt to show sports bra"
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00187_Inner_1": {
-        "anchor_idx": 6,
-        "inner": {
-            "seed": 1922413780,
-            "prompt": "remove the dress to show a slim body wearing a sports bra and shorts"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 1922413780,
+                "prompt": "remove the dress to show a slim body wearing a sports bra and shorts"
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "sports bra and shorts"
+            }
         }
     },
     "00187_Inner_2": {
-        "anchor_idx": 6,
-        "inner": {
-            "seed": 1954973032,
-            "prompt": "remove the dress to show a slim body wearing a sports bra and shorts"
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 1954973032,
+                "prompt": "remove the dress to show a slim body wearing a sports bra and shorts"
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "sports bra and shorts"
+            }
         }
     },
     "00188_Inner": {
-        "anchor_idx": 6,
-        "inner": {
-            "seed": 818971415,
-            "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
-            "negative_prompt": "muscle, abs, strong",
-            "guidance_scale": 4.5,
-            "true_cfg_scale": 2.0
+        "anchor_idx": 0,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 162301519,
+                "prompt": "remove the top garment to show a slender, thin, and slim man's chest with narrow frame",
+                "negative_prompt": "muscle, abs, strong",
+                "guidance_scale": 4.5,
+                "true_cfg_scale": 2.0
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "a man's torso"
+            }
         }
     },
     "00190_Inner": {
-        "anchor_idx": 6,
-        "inner": {
-            "seed": 40743597,
-            "prompt": "remove the sweater to show sports bra"
+        "anchor_idx": 19,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 40743597,
+                "prompt": "remove the sweater to show sports bra"
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     },
     "00191_Inner": {
-        "anchor_idx": 6,
-        "inner": {
-            "seed": 398511145,
-            "prompt": "remove the shirt to show sports bra"
+        "anchor_idx": 19,
+        "flux_kontext_args": {
+            "inner": {
+                "seed": 398511145,
+                "prompt": "remove the shirt to show sports bra"
+            }
+        },
+        "flux_fill_args": {
+            "inner": {
+                "prompt": "sports bra"
+            }
         }
     }
 }

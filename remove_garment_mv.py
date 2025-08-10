@@ -1,9 +1,12 @@
 import os
+import sys
 import gc
+import json
 
 from utils.concat import concatenate_imgs, transp_to_white
 from utils.create_masks_from_seg import get_mask_4ddress
-from utils.deconcat import deconcat_img, save_new_segmap
+from utils.deconcat import deconcat_img
+from segmentation.segment_dir import segment_dir
 import logging
 from PIL import Image
 from huggingface_hub import login
@@ -24,14 +27,14 @@ def disabled_safety_checker(images, clip_input):
     else:
         return images, False
 
-def remove_garment_kontext(pipe, image, prompt, neg_prompt=None, true_cfg_scale=1.0, num_inference_steps=28, guidance_scale=3.5, seed = None):
+def remove_garment_kontext(pipe, image, prompt, negative_prompt=None, true_cfg_scale=1.0, num_inference_steps=28, guidance_scale=3.5, seed = None):
     h, w = (image.height, image.width) if isinstance(image, Image.Image) else (image.shape[0], image.shape[1])
     seed =  seed or random.randint(0, MAX_SEED)
     print(f'Flux Kontext seed is {seed}')
     gen_image = pipe(
         image=image,
         prompt=prompt,
-        negative_prompt=neg_prompt,
+        negative_prompt=negative_prompt,
         true_cfg_scale=true_cfg_scale,
         height=h,
         width=w,
@@ -104,10 +107,16 @@ def get_sweeping_anchors_indices(initial_anchor_idx, num_views):
     return indices_list, indices_to_gen_save_flag_list
 
 
-def remove_garment_anchors(scan_dir, garment_type, prompt_flux_kontext, prompt_flux_fill, 
-                           initial_anchor_idx, indices_list, indices_to_gen_save_flag_list,
-                           seed_flux_kontext=None, seed_flux_fill=None, 
+def remove_garment_anchors(scan_dir, scan_out_dir, garment_type, initial_anchor_idx, indices_list, 
+                           indices_to_gen_save_flag_list, flux_kontext_args, flux_fill_args, 
                            ratio=4, pixel_sep=20, dil_its=1, ero_its=1, verbose = False):
+    if scan_dir == scan_out_dir:
+        print("Images will be overwritten! exiting.")
+        return
+    
+    os.makedirs(os.path.join(scan_out_dir, "images"), exist_ok=True)
+    os.makedirs(os.path.join(scan_out_dir, "segmentation_masks"), exist_ok=True)
+    
     # Set up logging
     logging.basicConfig(level=logging.INFO)
     logger = logging.getLogger(__name__)
@@ -125,9 +134,8 @@ def remove_garment_anchors(scan_dir, garment_type, prompt_flux_kontext, prompt_f
 
     # Remove garment from view with Flux Kontext. White bg works better with these models.
     front_view_img = transp_to_white(Image.open(os.path.join(scan_dir, 'images', img_fns[initial_anchor_idx])))
-    gen_front_view_img = remove_garment_kontext(pipe_kontext, front_view_img, prompt_flux_kontext, seed=seed_flux_kontext)
-    gen_front_view_img.save(os.path.join(scan_dir, 'images', f'gen_{initial_anchor_idx:04d}.png'))
-    save_new_segmap(scan_dir, initial_anchor_idx)
+    gen_front_view_img = remove_garment_kontext(pipe_kontext, front_view_img, **flux_kontext_args)
+    gen_front_view_img.save(os.path.join(scan_out_dir, 'images', f'train_{initial_anchor_idx:04d}.png'))
     vcomment(f'Removed garment from front view image: {initial_anchor_idx} and saved it.')
     del pipe_kontext; del gen_front_view_img; gc.collect(); torch.cuda.empty_cache()
 
@@ -144,13 +152,14 @@ def remove_garment_anchors(scan_dir, garment_type, prompt_flux_kontext, prompt_f
         # Loading images based on whether they are without garment and thus anchor or to be generated
         concat_imgs, concat_segs = [], []
         for i, gen_save, in zip(indices, indices_to_gen_save_flag):
+            # Choose images to be concatenated, could be from scan_dir or from the current out_dir
             if gen_save:
                 img_fn = os.path.join(scan_dir, 'images', f'train_{i:04d}.png')
                 concat_imgs.append(Image.open(img_fn))
                 seg_fn = os.path.join(scan_dir, 'segmentation_masks', f'train_{i:04d}.png')
                 concat_segs.append(Image.open(seg_fn))
             else:
-                img_fn = os.path.join(scan_dir, 'images', f'gen_{i:04d}.png')
+                img_fn = os.path.join(scan_out_dir, 'images', f'train_{i:04d}.png')
                 concat_imgs.append(Image.open(img_fn))
                 concat_segs.append(None)
 
@@ -167,15 +176,16 @@ def remove_garment_anchors(scan_dir, garment_type, prompt_flux_kontext, prompt_f
         # Inpaint concatentated anchor images with FluxFill:
         concat_img_pil = Image.fromarray(concat_img.astype(np.uint8))
         mask_pil = Image.fromarray((mask * 255).astype(np.uint8))
-        gen_concat_images = remove_garment_fill(pipe_fill, concat_img_pil, mask_pil, prompt_flux_fill, 
-                                                seed=seed_flux_fill)
+        gen_concat_images = remove_garment_fill(pipe_fill, concat_img_pil, mask_pil, **flux_fill_args)
         vcomment(f"Removed garments from concatenated views.")
         
         # Deconcatenate images and save generated images
-        deconcat_img(scan_dir, gen_concat_images, indices, concat_img_coords_list, human_dims_list, 
+        deconcat_img(scan_out_dir, gen_concat_images, indices, concat_img_coords_list, human_dims_list, 
                                   indices_to_gen_save_flag=indices_to_gen_save_flag)
         vcomment(f"{indices_to_gen_save} have been saved to scan directory.")
         del gen_concat_images; gc.collect(); torch.cuda.empty_cache()
+    segment_dir(scan_out_dir)
+    del pipe_fill; gc.collect(); torch.cuda.empty_cache()
 
 
 def get_initial_anchor_idx(scan_dir, img_fns):
@@ -190,23 +200,53 @@ def get_initial_anchor_idx(scan_dir, img_fns):
     highest_count = max(count_pixels)
     return count_pixels.index(highest_count)
 
-'''
-garment_type = 'upper'
-prompt_flux_kontext = 'remove the outer garment'
-prompt_flux_fill = 'white long sleeve shirt'
-seed_flux_kontext = 0
-seed_flux_fill = 0
 
-img_dir = os.path.join(scan_dir, 'images')
-img_fns = sorted([f for f in os.listdir(img_dir) if f.endswith('.png') and f.startswith('train')])
-num_views = len(img_fns)
-initial_anchor_idx = get_initial_anchor_idx(scan_dir, img_fns)
+def remove_garments(dataset_dir, out_dir, garment_data_json, index):
+    with open(garment_data_json, 'r') as f:
+        garment_data = json.load(f)
+    scan_names = list(garment_data.keys())
+    scan_name = scan_names[index-1]
+    scan_dict = garment_data[scan_name]
+    scan_dir = os.path.join(dataset_dir, scan_name)
 
-indices_list, indices_to_gen_save_flag_list = get_sweeping_anchors_indices(initial_anchor_idx, num_views)
+    initial_anchor_idx = scan_dict['anchor_idx']
+    img_dir = os.path.join(scan_dir, 'images')
+    img_fns = sorted([f for f in os.listdir(img_dir) if f.endswith('.png') and f.startswith('train')])
+    indices_list, indices_to_gen_save_flag_list = get_sweeping_anchors_indices(initial_anchor_idx, len(img_fns))
+    
+    # Removing outer garment
+    garment_type = 'outer'
+    if garment_type in scan_dict['flux_kontext_args']:
+        scan_noouter_dir = os.path.join(out_dir, scan_name, garment_type)
+        flux_kontext_args = scan_dict['flux_kontext_args'][garment_type]
+        flux_fill_args = scan_dict['flux_fill_args'][garment_type]
 
-# num_anchors = 4
-# indices_list, indices_to_gen_save_flag_list = get_equally_spaced_anchors_indices(initial_anchor_idx, num_views, num_anchors)
-remove_garment_anchors(scan_dir, garment_type, prompt_flux_kontext, prompt_flux_fill, 
-                       initial_anchor_idx, indices_list, indices_to_gen_save_flag_list,
-                       seed_flux_kontext=seed_flux_kontext, seed_flux_fill=seed_flux_fill, verbose = True)
-'''
+        # num_anchors = 4
+        # indices_list, indices_to_gen_save_flag_list = get_equally_spaced_anchors_indices(initial_anchor_idx, num_views, num_anchors)
+        remove_garment_anchors(scan_dir, scan_noouter_dir, 'upper', initial_anchor_idx, indices_list, 
+                            indices_to_gen_save_flag_list, flux_kontext_args, flux_fill_args, verbose=True)
+    else:
+        scan_noouter_dir = scan_dir
+
+    # Removing inner garment
+    garment_type = 'inner'
+    scan_noinner_dir = os.path.join(out_dir, scan_name, garment_type)
+    flux_kontext_args = scan_dict['flux_kontext_args'][garment_type]
+    flux_fill_args = scan_dict['flux_fill_args'][garment_type]
+
+    # num_anchors = 4
+    # indices_list, indices_to_gen_save_flag_list = get_equally_spaced_anchors_indices(initial_anchor_idx, num_views, num_anchors)
+    remove_garment_anchors(scan_noouter_dir, scan_noinner_dir, garment_type, initial_anchor_idx, indices_list, 
+                        indices_to_gen_save_flag_list, flux_kontext_args, flux_fill_args, verbose=True, dil_its=2, ero_its=None)
+    
+            
+if __name__ == "__main__":
+    if len(sys.argv) != 5:
+        print(f"Usage: python {sys.argv[0]} <dataset_dir> <out_dir> <garment_data_json> <index>")
+        sys.exit(1)
+    
+    dataset_dir = sys.argv[1]
+    out_dir = sys.argv[2]
+    garment_data_json = sys.argv[3]
+    index = int(sys.argv[4])
+    remove_garments(dataset_dir, out_dir, garment_data_json, index)

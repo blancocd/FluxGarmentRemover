@@ -31,6 +31,7 @@ def main(dataset_dir, garment_data_json, index):
     scan_names = list(garment_data.keys())
     scan_name = scan_names[index-1]
     scan_dict = garment_data[scan_name]
+    scan_gen_args = scan_dict['flux_kontext_args']
     print(f"Processing scan {scan_name} with index {index-1}.")
 
     copy_filename = f"./test_fkon/{scan_name}.png"
@@ -48,15 +49,14 @@ def main(dataset_dir, garment_data_json, index):
     outer_filename = f"./test_fkon/{scan_name}_outer.png"
     if not os.path.isfile(outer_filename):
         scan_image = Image.open(copy_filename)
-        if 'outer' not in scan_dict:
+        if 'outer' not in scan_gen_args:
             scan_image.save(outer_filename)
         else:
-            prompt = scan_dict['outer']['prompt']
-            seed = scan_dict['outer']['seed']
+            prompt = scan_gen_args['outer']['prompt']
+            seed = scan_gen_args['outer']['seed']
             seed = random.randint(0, MAX_SEED) if seed == -1 else seed
             print(f'Will remove outer garment for {scan_name} with prompt {prompt} and seed {seed}.')
             gen_image = remove_garment_kontext(pipe_kontext, scan_image, prompt, seed=seed)
-            outer_filename = f"./test_fkon/{scan_name}_outer.png"
             gen_image.save(outer_filename)
             print(f"Generated image saved as {outer_filename}")
             del gen_image; gc.collect(); torch.cuda.empty_cache()
@@ -64,15 +64,15 @@ def main(dataset_dir, garment_data_json, index):
     inner_filename = f"./test_fkon/{scan_name}_inner.png"
     if not os.path.isfile(inner_filename):
         image_no_outer = Image.open(outer_filename)
-        prompt = scan_dict['inner']['prompt']
-        neg_prompt = scan_dict['inner']['negative_prompt'] if 'negative_prompt' in scan_dict['inner'] else None
-        true_cfg_scale = scan_dict['inner']['true_cfg_scale'] if 'true_cfg_scale' in scan_dict['inner'] else 1.0
-        num_inference_steps = scan_dict['inner']['num_inference_steps'] if 'num_inference_steps' in scan_dict['inner'] else 28
-        guidance_scale = scan_dict['inner']['guidance_scale'] if 'guidance_scale' in scan_dict['inner'] else 3.5
-        seed = scan_dict['inner']['seed']
+        prompt = scan_gen_args['inner']['prompt']
+        neg_prompt = scan_gen_args['inner']['negative_prompt'] if 'negative_prompt' in scan_gen_args['inner'] else None
+        true_cfg_scale = scan_gen_args['inner']['true_cfg_scale'] if 'true_cfg_scale' in scan_gen_args['inner'] else 1.0
+        num_inference_steps = scan_gen_args['inner']['num_inference_steps'] if 'num_inference_steps' in scan_gen_args['inner'] else 28
+        guidance_scale = scan_gen_args['inner']['guidance_scale'] if 'guidance_scale' in scan_gen_args['inner'] else 3.5
+        seed = scan_gen_args['inner']['seed']
         seed = random.randint(0, MAX_SEED) if seed == -1 else seed
         print(f'Will remove inner garment for {scan_name} with prompt {prompt} and seed {seed}.')
-        gen_image = remove_garment_kontext(pipe_kontext, image_no_outer, prompt, neg_prompt=neg_prompt, 
+        gen_image = remove_garment_kontext(pipe_kontext, image_no_outer, prompt, negative_prompt=neg_prompt, 
                                             true_cfg_scale=true_cfg_scale, num_inference_steps=num_inference_steps, 
                                             guidance_scale=guidance_scale, seed=seed)
         gen_image.save(inner_filename)
