@@ -7,7 +7,6 @@ from PIL import Image
 import torch.nn.functional as F
 from transformers import AutoImageProcessor, AutoModelForSemanticSegmentation
 from tqdm import tqdm
-from utils.create_masks_from_seg import get_mask_4ddress
 
 
 fourddress_palette = np.array([

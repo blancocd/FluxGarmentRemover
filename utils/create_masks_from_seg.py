@@ -60,7 +60,7 @@ def get_mask_4ddress(segmentation_map, seg_label, dil_its=1, ero_its=1) -> np.nd
     elif 'human' in seg_label:
         target_colors.update(list(range(6)))
     target_colors = [fourddress_palette[i] for i in target_colors]
-    if ero_its is None:
+    if ero_its is -1:
         avoid_colors = []
     else:
         avoid_colors = [fourddress_palette[i] for i in [0, 1]] # skin and hair

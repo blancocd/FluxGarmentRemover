@@ -201,11 +201,14 @@ def get_initial_anchor_idx(scan_dir, img_fns):
     return count_pixels.index(highest_count)
 
 
-def remove_garments(dataset_dir, out_dir, garment_data_json, index):
+def remove_garments(dataset_dir, out_dir, garment_data_json, index, 
+                    outer_dil_its=1, outer_ero_its=1,
+                    inner_dil_its=1, inner_ero_its=1):
     with open(garment_data_json, 'r') as f:
         garment_data = json.load(f)
     scan_names = list(garment_data.keys())
     scan_name = scan_names[index-1]
+    print(scan_name)
     scan_dict = garment_data[scan_name]
     scan_dir = os.path.join(dataset_dir, scan_name)
 
@@ -224,7 +227,8 @@ def remove_garments(dataset_dir, out_dir, garment_data_json, index):
         # num_anchors = 4
         # indices_list, indices_to_gen_save_flag_list = get_equally_spaced_anchors_indices(initial_anchor_idx, num_views, num_anchors)
         remove_garment_anchors(scan_dir, scan_noouter_dir, 'upper', initial_anchor_idx, indices_list, 
-                            indices_to_gen_save_flag_list, flux_kontext_args, flux_fill_args, verbose=True)
+                            indices_to_gen_save_flag_list, flux_kontext_args, flux_fill_args, 
+                            verbose=True, dil_its=outer_dil_its, ero_its=outer_ero_its)
     else:
         scan_noouter_dir = scan_dir
 
@@ -237,16 +241,26 @@ def remove_garments(dataset_dir, out_dir, garment_data_json, index):
     # num_anchors = 4
     # indices_list, indices_to_gen_save_flag_list = get_equally_spaced_anchors_indices(initial_anchor_idx, num_views, num_anchors)
     remove_garment_anchors(scan_noouter_dir, scan_noinner_dir, garment_type, initial_anchor_idx, indices_list, 
-                        indices_to_gen_save_flag_list, flux_kontext_args, flux_fill_args, verbose=True, dil_its=2, ero_its=None)
+                        indices_to_gen_save_flag_list, flux_kontext_args, flux_fill_args, 
+                        verbose=True, dil_its=inner_dil_its, ero_its=inner_ero_its)
     
             
 if __name__ == "__main__":
-    if len(sys.argv) != 5:
-        print(f"Usage: python {sys.argv[0]} <dataset_dir> <out_dir> <garment_data_json> <index>")
+    if len(sys.argv) != 9:
+        print(f"Usage: python {sys.argv[0]} <dataset_dir> <out_dir> <garment_data_json> <index> <outer_dil_its> <outer_ero_its> <inner_dil_its> <inner_ero_its>")
         sys.exit(1)
     
     dataset_dir = sys.argv[1]
     out_dir = sys.argv[2]
     garment_data_json = sys.argv[3]
     index = int(sys.argv[4])
-    remove_garments(dataset_dir, out_dir, garment_data_json, index)
+    outer_dil_its = int(sys.argv[5])
+    outer_ero_its = int(sys.argv[6])
+    inner_dil_its = int(sys.argv[7])
+    inner_ero_its = int(sys.argv[8])
+
+    print(sys.argv)
+
+    remove_garments(dataset_dir, out_dir, garment_data_json, index, 
+                    outer_dil_its=outer_dil_its, outer_ero_its=outer_ero_its,
+                    inner_dil_its=inner_dil_its, inner_ero_its=inner_ero_its)

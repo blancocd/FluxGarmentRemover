@@ -10,3 +10,5 @@ test_fkon/
 my_script*
 script_vae*
 misc/
+plots/
+*cpu_results.json
