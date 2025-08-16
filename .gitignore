@@ -12,3 +12,4 @@ script_vae*
 misc/
 plots/
 *cpu_results.json
+*gemma_results.json

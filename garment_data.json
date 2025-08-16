@@ -16,7 +16,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "a white long sleeve shirt"
+                "prompt": "a white polo shirt"
             },
             "inner": {
                 "prompt": "a man's torso"
@@ -37,7 +37,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "shirt"
+                "prompt": "yellow t-shirt"
             },
             "inner": {
                 "prompt": "sports bra"
@@ -61,7 +61,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "top garment"
+                "prompt": "gray sweater"
             },
             "inner": {
                 "prompt": "a man's torso"
@@ -176,7 +176,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "shirt"
+                "prompt": "white oversized long sleeve shirt"
             },
             "inner": {
                 "prompt": "sports bra"
@@ -197,7 +197,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "long sleeve shirt"
+                "prompt": "white oversized long sleeve shirt"
             },
             "inner": {
                 "prompt": "sports bra"
@@ -218,7 +218,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "shirt"
+                "prompt": "white long sleeve shirt"
             },
             "inner": {
                 "prompt": "sports bra"
@@ -239,7 +239,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "shirt"
+                "prompt": "white t-shirt"
             },
             "inner": {
                 "prompt": "sports bra"
@@ -260,7 +260,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "long sleeve shirt"
+                "prompt": "white long sleeve shirt"
             },
             "inner": {
                 "prompt": "sports bra"
@@ -302,7 +302,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "shirt"
+                "prompt": "brown long sleeve shirt"
             },
             "inner": {
                 "prompt": "sports bra"
@@ -324,7 +324,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "dress"
+                "prompt": "black dress"
             },
             "inner": {
                 "prompt": "sports bra and shorts"
@@ -347,7 +347,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "top garment"
+                "prompt": "white t-shirt"
             },
             "inner": {
                 "prompt": "a man's torso"
@@ -371,7 +371,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "top garment"
+                "prompt": "white t-shirt"
             },
             "inner": {
                 "prompt": "a man's torso"
@@ -392,7 +392,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "shirt"
+                "prompt": "brown long sleeve shirt"
             },
             "inner": {
                 "prompt": "sports bra"
@@ -413,7 +413,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "shirt"
+                "prompt": "yellow long sleeve shirt"
             },
             "inner": {
                 "prompt": "sports bra"
@@ -434,7 +434,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "shirt"
+                "prompt": "yellow t-shirt"
             },
             "inner": {
                 "prompt": "sports bra"
@@ -504,7 +504,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "blouse"
+                "prompt": "coral blouse"
             },
             "inner": {
                 "prompt": "sports bra"
@@ -528,7 +528,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "top garment"
+                "prompt": "dark blue shirt"
             },
             "inner": {
                 "prompt": "a man's torso"
@@ -549,7 +549,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "shirt"
+                "prompt": "black long sleeve shirt"
             },
             "inner": {
                 "prompt": "sports bra"
@@ -570,7 +570,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "shirt"
+                "prompt": "blue and white striped long sleeve shirt"
             },
             "inner": {
                 "prompt": "sports bra"
@@ -594,7 +594,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "top garment"
+                "prompt": "gray t-shirt"
             },
             "inner": {
                 "prompt": "a man's torso"
@@ -642,7 +642,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "top garment"
+                "prompt": "dark blue sweater"
             },
             "inner": {
                 "prompt": "a man's torso"
@@ -663,7 +663,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "long sleeve shirt"
+                "prompt": "gray sweater"
             },
             "inner": {
                 "prompt": "sports bra"
@@ -687,7 +687,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "top garment"
+                "prompt": "gray shirt"
             },
             "inner": {
                 "prompt": "a man's torso"
@@ -735,7 +735,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "top garment"
+                "prompt": "blue t-shirt"
             },
             "inner": {
                 "prompt": "a man's torso"
@@ -756,7 +756,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "long sleeve shirt"
+                "prompt": "long sleeve white shirt"
             },
             "inner": {
                 "prompt": "sports bra"
@@ -780,7 +780,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "top garment"
+                "prompt": "dark blue sweater"
             },
             "inner": {
                 "prompt": "a man's torso"
@@ -804,7 +804,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "top garment"
+                "prompt": "light gray t-shirt"
             },
             "inner": {
                 "prompt": "a man's torso"
@@ -912,7 +912,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "shirt"
+                "prompt": "colorful sweater"
             },
             "inner": {
                 "prompt": "sports bra"
@@ -933,7 +933,7 @@
         },
         "flux_fill_args": {
             "outer": {
-                "prompt": "shirt"
+                "prompt": "red t-shirt"
             },
             "inner": {
                 "prompt": "sports bra"
