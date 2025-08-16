@@ -24,7 +24,6 @@ def disabled_safety_checker(images, clip_input):
 # then the inner garment is removed and the generated image is saved as {scan_name}_inner.png
 # lastly, the lower garment is removed and the generated image is saved as {scan_name}_lower.png
 def main(dataset_dir, garment_data_json, index):
-    # garment_data_json = '/mnt/lustre/work/ponsmoll/pba534/ffgarments/garment_data.json'
     with open(garment_data_json, 'r') as f:
         garment_data = json.load(f)
 

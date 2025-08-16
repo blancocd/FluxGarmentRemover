@@ -13,9 +13,7 @@ def load_mask(filename):
     mask = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY).astype(bool)
     return mask
 
-def main(results_dirs, results_fns):
-    garment_data_fn = '/mnt/lustre/work/ponsmoll/pba534/ffgarments_datagen/data/garment_data.json'
-
+def main(results_dirs, results_fns, garment_data_json):
     print(f"Evaluating {results_dirs} and saving results to {results_fns}.")
     model_id = "google/gemma-3-4b-it"
     model = Gemma3ForConditionalGeneration.from_pretrained(
@@ -160,5 +158,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Evaluate inpainting results.")
     parser.add_argument("--results_dir", nargs='+', required=True, help="Directories with result images")
     parser.add_argument("--results_fn", nargs='+', required=True, help="Filenames for output JSON results")
+    parser.add_argument("--garment_data_json", required=True, help="JSON with prompts per scan")
     args = parser.parse_args()
-    main(args.results_dir, args.results_fn)
+    main(args.results_dir, args.results_fn, args.garment_data_json)

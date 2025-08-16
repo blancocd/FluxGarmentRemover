@@ -1,101 +1,131 @@
+import re
 import os
 import json
 import shutil
 import argparse
 import subprocess
 
-def prepare_data(scan_dir):
-    print(f"Preparing data for scan: {scan_dir}")
+def prepare_data(dataset_dir, gen_dir, scan_name, method):
+    transforms_path = os.path.join(dataset_dir, scan_name, "transforms_train.json")
 
-    odd_dir = os.path.join(scan_dir, "odd_views")
-    even_dir = os.path.join(scan_dir, "even_views")
-    os.makedirs(os.path.join(odd_dir, "images"), exist_ok=True)
-    os.makedirs(os.path.join(even_dir, "images"), exist_ok=True)
+    for removal_type in ['inner', 'outer']:
+        with open(transforms_path, "r") as f:
+            transforms = json.load(f)
 
-    transforms_path = os.path.join(scan_dir, "transforms_train.json")
-    with open(transforms_path, "r") as f:
-        transforms = json.load(f)
+        gen_scan_dir = os.path.join(gen_dir, scan_name, removal_type)
+        if not os.path.exists(gen_scan_dir):
+            continue
+        odd_dir = os.path.join(gen_dir, f"odd_views_{method}", f'{scan_name}_{removal_type}')
+        even_dir = os.path.join(gen_dir, f"even_views_{method}", f'{scan_name}_{removal_type}')
+        os.makedirs(os.path.join(odd_dir, "images"), exist_ok=True)
+        os.makedirs(os.path.join(even_dir, "images"), exist_ok=True)
 
-    # Separate frames into odd and even lists
-    odd_frames = []
-    even_frames = []
-    for i, frame in enumerate(transforms["frames"]):
-        # Extract the image number from the file path
-        img_num = int(os.path.basename(frame["image_path"]).split("_")[-1])
+        # Separate frames into odd and even lists
+        gen_frames = []
+        for i, frame in enumerate(transforms["frames"]):
+            # Extract the image number from the file path
+            num_str = os.path.basename(frame["image_path"]).split("_")[-1]
+            img_num_transforms = int(num_str)
 
-        # Get the original image path
-        original_img_path = os.path.join(scan_dir, "images", f"gen_{img_num:04d}.png")
-        
-        # Determine the new image path and frame list
-        if i % 2 == 0:
-            new_img_path = os.path.join(even_dir, "images", f"train_{i//2:04d}.png")
-            frame["image_path"] = f"./images/train_{i//2:04d}.png"
-            even_frames.append(frame)
-        else:
-            new_img_path = os.path.join(odd_dir, "images", f"train_{i//2:04d}.png")
-            frame["image_path"] = f"./images/train_{i//2:04d}.png"
-            odd_frames.append(frame)
+            # Get the generated image path
+            original_img_path = os.path.join(gen_dir, scan_name, removal_type, "images",
+                                             f"train_{img_num_transforms:04d}.png")
+            if not os.path.exists(original_img_path):
+                continue
             
-        # Copy and rename the image
-        shutil.copy(original_img_path, new_img_path)
+            frame["file_path"] = f"./images/train_{i:04d}"
+            gen_frames.append(frame)
 
-    # Create new transforms for odd and even views
-    odd_transforms = {**transforms, "frames": odd_frames}
-    even_transforms = {**transforms, "frames": even_frames}
+        for i, frame in enumerate(gen_frames):
+            # Copy and rename the image
+            num_str = os.path.basename(frame["file_path"]).split("_")[-1]
+            img_num_transforms = int(num_str)
+            original_img_path = os.path.join(gen_dir, scan_name, removal_type, "images",
+                                             f"train_{img_num_transforms:04d}.png")
+            if i % 2 == 0:
+                new_img_path = os.path.join(even_dir, frame["file_path"] + '.png')
+            else:
+                new_img_path = os.path.join(odd_dir, frame["file_path"]+'.png')
 
-    # Write the new transforms to JSON files
-    with open(os.path.join(odd_dir, "transforms_train.json"), "w") as f:
-        json.dump(odd_transforms, f, indent=4)
-    with open(os.path.join(even_dir, "transforms_train.json"), "w") as f:
-        json.dump(even_transforms, f, indent=4)
+            shutil.copy(original_img_path, new_img_path)
 
-    print("Data preparation complete.")
+        # Create new transforms for odd and even views
+        even_transforms = {**transforms, "frames": gen_frames[::2]}
+        odd_transforms = {**transforms, "frames": gen_frames[1::2]}
 
-def run_mvfit(mvg_bench_dir, scan_dir):
-    print("Running 3DGS fitting for both odd and even views")
+        # Write the new transforms to JSON files
+        empty_test_transforms = {**transforms, "frames":[]}
+        with open(os.path.join(odd_dir, "transforms_train.json"), "w") as f:
+            json.dump(odd_transforms, f, indent=4)
+        with open(os.path.join(even_dir, "transforms_train.json"), "w") as f:
+            json.dump(even_transforms, f, indent=4)
+        with open(os.path.join(odd_dir, "transforms_test.json"), "w") as f:
+            json.dump(empty_test_transforms, f, indent=4)
+        with open(os.path.join(even_dir, "transforms_test.json"), "w") as f:
+            json.dump(empty_test_transforms, f, indent=4)
 
-    # Run mvfit for even views
-    even_views_path = os.path.join(scan_dir, "even_views")
-    subprocess.run([
-        "python", os.path.join(mvg_bench_dir, "run_mvfit.py"),
-        even_views_path, "--white_background"
-    ], check=True, cwd=mvg_bench_dir)
+        print("Data preparation complete.", flush=True)
 
-    # Run mvfit for odd views
-    odd_views_path = os.path.join(scan_dir, "odd_views")
-    subprocess.run([
-        "python", os.path.join(mvg_bench_dir, "run_mvfit.py"),
-        odd_views_path, "--white_background"
-    ], check=True, cwd=mvg_bench_dir)
+def run_mvfit(mvg_bench_dir,  gen_dir, scan_name, method):
+    print("Running 3DGS fitting for both odd and even views", flush=True)
 
-    print("3DGS fitting complete.")
+    for removal_type in ['inner', 'outer']:
+        odd_views_path = os.path.join(gen_dir, f"odd_views_{method}", f'{scan_name}_{removal_type}')
+        even_views_path = os.path.join(gen_dir, f"even_views_{method}", f'{scan_name}_{removal_type}')
+        if not os.path.exists(odd_views_path):
+            continue
+        
+        # Run mvfit for even views
+        subprocess.run([
+            "python", os.path.join(mvg_bench_dir, "run_mvfit.py"),
+            even_views_path, "--white_background", "-debug"
+        ], check=True, cwd=mvg_bench_dir)
 
-def run_evaluation(mvg_bench_dir, scan_dir):
-    print("Running 3D consistency evaluation...")
+        # Run mvfit for odd views
+        subprocess.run([
+            "python", os.path.join(mvg_bench_dir, "run_mvfit.py"),
+            odd_views_path, "--white_background", "-debug"
+        ], check=True, cwd=mvg_bench_dir)
 
-    scan_name = os.path.basename(scan_dir)
-    odd_output_name = f"output/consistency/{scan_name}_odd_views"
-    even_output_name = f"output/consistency/{scan_name}_even_views"
+    print("3DGS fitting complete.", flush=True)
 
-    subprocess.run([
-        "python", os.path.join(mvg_bench_dir, "eval", "eval_consistency.py"),
-        "--name_odd", odd_output_name,
-        "--name_even", even_output_name
-    ], check=True, cwd=mvg_bench_dir)
+def run_evaluation(mvg_bench_dir,  gen_dir, scan_name):
+    print("Running 3D consistency evaluation...", flush=True)
+    
+    for removal_type in ['inner', 'outer']:
+        gen_scan_dir = os.path.join(gen_dir, scan_name, removal_type)
+        if not os.path.exists(gen_scan_dir):
+            continue
 
-    print("3D consistency evaluation complete.")
+        odd_output_name = f"output/consistency/odd_views/*"
+        even_output_name = f"output/consistency/even_views/*"
+        subprocess.run([
+            "python", os.path.join(mvg_bench_dir, "eval", "eval_consistency.py"),
+            "--name_odd", odd_output_name,
+            "--name_even", even_output_name
+        ], check=True, cwd=mvg_bench_dir)
+
+    print("3D consistency evaluation complete.", flush=True)
 
 def main():
     parser = argparse.ArgumentParser(
         description="Run MVGBench's 3D consistency evaluation pipeline."
     )
     parser.add_argument(
-        "--scans_dir", type=str, required=True,
-        help="The parent directory containing all the scan subdirectories."
+        "--data_dir", type=str, required=True,
+        help="The directory to the 4ddress dataset containing all the scan subdirectories."
+    )
+    parser.add_argument(
+        "--gen_dir", type=str, required=True,
+        help="The directory containing the output of the mv generation."
     )
     parser.add_argument(
         "--scan_index", type=int, required=True,
         help="The index of the scan to process (for array jobs)."
+    )
+    parser.add_argument(
+        "--garment_data_json", type=str, required=True,
+        help="JSON with prompts per scan."
     )
     parser.add_argument(
         "--mvg_bench_dir", type=str, required=True,
@@ -115,17 +145,26 @@ def main():
     )
     args = parser.parse_args()
 
-    # Get the selected scan directory
-    scans = sorted([os.path.join(args.scans_dir, d) for d in os.listdir(args.scans_dir) if os.path.isdir(os.path.join(args.scans_dir, d))])
-    scan_dir = scans[args.scan_index]
+    with open(args.garment_data_json, 'r') as f:
+        garment_data = json.load(f)
+    scan_names = list(garment_data.keys())
+    scan_name = scan_names[args.scan_index]
+    print(f'Running MVGBench for scan {scan_name}', flush=True)
+
+    method = os.path.basename(os.path.normpath(args.gen_dir))
+    match = re.search(r'(\d+)_(\d+)_(\d+)_(\d+)', method)
+    outer_dil_its = int(match.group(1))
+    outer_ero_its = int(match.group(2))
+    inner_dil_its = int(match.group(3))
+    inner_ero_its = int(match.group(4))
 
     # Run the pipeline
     if not args.skip_data_prep:
-        prepare_data(scan_dir)
+        prepare_data(args.data_dir, args.gen_dir, scan_name, method)
     if not args.skip_mvfit:
-        run_mvfit(args.mvg_bench_dir, scan_dir)
+        run_mvfit(args.mvg_bench_dir, args.gen_dir, scan_name, method)
     if not args.skip_eval:
-        run_evaluation(args.mvg_bench_dir, scan_dir)
+        run_evaluation(args.mvg_bench_dir, args.gen_dir, scan_name)
 
 if __name__ == "__main__":
     main()

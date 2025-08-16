@@ -172,11 +172,12 @@ def create_bonus_plots(df):
 if __name__ == "__main__":
 
     if len(sys.argv) < 2:
-        print("Usage: python plots.py <json_file> <method>")
+        print("Usage: python plots.py <json_file>")
         sys.exit(1)
 
     JSON_FILE = sys.argv[1]
-    OUTPUT_DIR = f"./plots/{sys.argv[2]}"
+    method = os.path.basename(JSON_FILE)[:len('sweeping_anchors_1_1_2_0')]
+    OUTPUT_DIR = f"./plots/{method}"
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     # Load and process data

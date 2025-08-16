@@ -53,8 +53,10 @@ def get_ious(segformer_fn, gen_segformer_fn):
     return ious
     
 
-def main(gen_method_dir, dataset_dir):
-    scan_names = sorted([d for d in os.listdir(gen_method_dir) if os.path.isdir(os.path.join(gen_method_dir, d))])
+def main(gen_method_dir, dataset_dir, garment_data_json):
+    with open(garment_data_json, 'r') as f:
+        garment_data = json.load(f)
+    scan_names = list(garment_data.keys())
     
     method = os.path.basename(os.path.normpath(gen_method_dir))
     match = re.search(r'(\d+)_(\d+)_(\d+)_(\d+)', method)
@@ -130,10 +132,11 @@ def main(gen_method_dir, dataset_dir):
         json.dump(results_dict, f, indent=2)
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        print(f"Example usage: {sys.argv[0]} <gen_method_dir> <dataset_dir>")
+    if len(sys.argv) != 4:
+        print(f"Example usage: {sys.argv[0]} <gen_method_dir> <dataset_dir> <garment_data>")
     else:
         gen_method_dir = sys.argv[1]
         dataset_dir = sys.argv[2]
+        garment_data_json = sys.argv[3]
         print(sys.argv)
-        main(gen_method_dir, dataset_dir)
+        main(gen_method_dir, dataset_dir, garment_data_json)
