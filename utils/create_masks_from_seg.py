@@ -24,6 +24,14 @@ def remove_unconn(mask, min_component_area = 20):
     mask = filtered_mask 
     return mask
 
+def get_mask_from_segmap_nochanges(segmentation_map, target_colors, avoid_colors, tolerance=5, dil_its=1, ero_its = 1) -> np.ndarray:
+    mask = np.zeros(segmentation_map.shape[:2], dtype=np.uint8)
+
+    for target in target_colors:
+        close = np.all(np.abs(segmentation_map - target) <= tolerance, axis=-1)
+        mask = np.logical_or(mask, close)
+    return mask
+
 def get_mask_from_segmap(segmentation_map, target_colors, avoid_colors, tolerance=5, dil_its=1, ero_its = 1) -> np.ndarray:
     mask = np.zeros(segmentation_map.shape[:2], dtype=np.uint8)
 

@@ -13,6 +13,7 @@ def prepare_data(dataset_dir, gen_dir, scan_name, method):
             transforms = json.load(f)
 
         gen_scan_dir = os.path.join(gen_dir, scan_name, removal_type)
+        print(f"Preparing data for ", gen_scan_dir)
         if not os.path.exists(gen_scan_dir):
             continue
         odd_dir = os.path.join(gen_dir, f"odd_views_{method}", f'{scan_name}_{removal_type}')
@@ -42,27 +43,24 @@ def prepare_data(dataset_dir, gen_dir, scan_name, method):
             img_num_transforms = int(num_str)
             original_img_path = os.path.join(gen_dir, scan_name, removal_type, "images",
                                              f"train_{img_num_transforms:04d}.png")
-            if i % 2 == 0:
-                new_img_path = os.path.join(even_dir, frame["file_path"] + '.png')
-            else:
-                new_img_path = os.path.join(odd_dir, frame["file_path"]+'.png')
-
-            shutil.copy(original_img_path, new_img_path)
+            
+            for d in [even_dir, odd_dir]:
+                new_img_path = os.path.join(d, frame["file_path"] + '.png')
+                shutil.copy(original_img_path, new_img_path)
 
         # Create new transforms for odd and even views
         even_transforms = {**transforms, "frames": gen_frames[::2]}
         odd_transforms = {**transforms, "frames": gen_frames[1::2]}
 
         # Write the new transforms to JSON files
-        empty_test_transforms = {**transforms, "frames":[]}
         with open(os.path.join(odd_dir, "transforms_train.json"), "w") as f:
             json.dump(odd_transforms, f, indent=4)
         with open(os.path.join(even_dir, "transforms_train.json"), "w") as f:
             json.dump(even_transforms, f, indent=4)
         with open(os.path.join(odd_dir, "transforms_test.json"), "w") as f:
-            json.dump(empty_test_transforms, f, indent=4)
+            json.dump(even_transforms, f, indent=4)
         with open(os.path.join(even_dir, "transforms_test.json"), "w") as f:
-            json.dump(empty_test_transforms, f, indent=4)
+            json.dump(odd_transforms, f, indent=4)
 
         print("Data preparation complete.", flush=True)
 
@@ -70,40 +68,35 @@ def run_mvfit(mvg_bench_dir,  gen_dir, scan_name, method):
     print("Running 3DGS fitting for both odd and even views", flush=True)
 
     for removal_type in ['inner', 'outer']:
-        odd_views_path = os.path.join(gen_dir, f"odd_views_{method}", f'{scan_name}_{removal_type}')
-        even_views_path = os.path.join(gen_dir, f"even_views_{method}", f'{scan_name}_{removal_type}')
-        if not os.path.exists(odd_views_path):
+        odd_dir = os.path.join(gen_dir, f"odd_views_{method}", f'{scan_name}_{removal_type}')
+        even_dir = os.path.join(gen_dir, f"even_views_{method}", f'{scan_name}_{removal_type}')
+        if not os.path.exists(odd_dir):
             continue
         
         # Run mvfit for even views
         subprocess.run([
             "python", os.path.join(mvg_bench_dir, "run_mvfit.py"),
-            even_views_path, "--white_background", "-debug"
+            even_dir, "--white_background", "-debug"
         ], check=True, cwd=mvg_bench_dir)
 
         # Run mvfit for odd views
         subprocess.run([
             "python", os.path.join(mvg_bench_dir, "run_mvfit.py"),
-            odd_views_path, "--white_background", "-debug"
+            odd_dir, "--white_background", "-debug"
         ], check=True, cwd=mvg_bench_dir)
 
     print("3DGS fitting complete.", flush=True)
 
-def run_evaluation(mvg_bench_dir,  gen_dir, scan_name):
+def run_evaluation(mvg_bench_dir, method):
     print("Running 3D consistency evaluation...", flush=True)
-    
-    for removal_type in ['inner', 'outer']:
-        gen_scan_dir = os.path.join(gen_dir, scan_name, removal_type)
-        if not os.path.exists(gen_scan_dir):
-            continue
 
-        odd_output_name = f"output/consistency/odd_views/*"
-        even_output_name = f"output/consistency/even_views/*"
-        subprocess.run([
-            "python", os.path.join(mvg_bench_dir, "eval", "eval_consistency.py"),
-            "--name_odd", odd_output_name,
-            "--name_even", even_output_name
-        ], check=True, cwd=mvg_bench_dir)
+    odd_output_name = f"output/consistency/odd_views_{method}/*"
+    even_output_name = f"output/consistency/even_views_{method}/*"
+    subprocess.run([
+        "python", os.path.join(mvg_bench_dir, "eval", "eval_consistency.py"),
+        "--name_odd", odd_output_name,
+        "--name_even", even_output_name
+    ], check=True, cwd=mvg_bench_dir)
 
     print("3D consistency evaluation complete.", flush=True)
 
@@ -152,11 +145,6 @@ def main():
     print(f'Running MVGBench for scan {scan_name}', flush=True)
 
     method = os.path.basename(os.path.normpath(args.gen_dir))
-    match = re.search(r'(\d+)_(\d+)_(\d+)_(\d+)', method)
-    outer_dil_its = int(match.group(1))
-    outer_ero_its = int(match.group(2))
-    inner_dil_its = int(match.group(3))
-    inner_ero_its = int(match.group(4))
 
     # Run the pipeline
     if not args.skip_data_prep:
@@ -164,7 +152,7 @@ def main():
     if not args.skip_mvfit:
         run_mvfit(args.mvg_bench_dir, args.gen_dir, scan_name, method)
     if not args.skip_eval:
-        run_evaluation(args.mvg_bench_dir, args.gen_dir, scan_name)
+        run_evaluation(args.mvg_bench_dir, method)
 
 if __name__ == "__main__":
     main()

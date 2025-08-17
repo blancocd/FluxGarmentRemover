@@ -10,6 +10,7 @@ test_fkon/
 my_script*
 script_vae*
 misc/
-plots/
+plots*/
 *cpu_results.json
 *gemma_results.json
+test_train_fitting_metrics/

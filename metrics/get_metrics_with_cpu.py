@@ -2,7 +2,7 @@ import json
 import os
 from skimage.metrics import structural_similarity
 import numpy as np
-from utils.create_masks_from_seg import get_mask_4ddress, get_mask_from_segmap, fourddress_palette
+from utils.create_masks_from_seg import get_mask_4ddress, get_mask_from_segmap_nochanges, fourddress_palette
 from utils.concat import transp_to_white
 from PIL import Image
 import numpy as np
@@ -47,8 +47,8 @@ def get_ious(segformer_fn, gen_segformer_fn):
     gen_segformer_map = np.array(Image.open(gen_segformer_fn))
     ious = []
     for target_color in fourddress_palette:
-        segformer_mask = get_mask_from_segmap(segformer_map, target_color, [], dil_its=0, ero_its = 0)
-        gen_segformer_mask = get_mask_from_segmap(gen_segformer_map, target_color, [], dil_its=0, ero_its = 0)
+        segformer_mask = get_mask_from_segmap_nochanges(segformer_map, target_color, [], dil_its=0, ero_its = 0)
+        gen_segformer_mask = get_mask_from_segmap_nochanges(gen_segformer_map, target_color, [], dil_its=0, ero_its = 0)
         ious.append(iou(segformer_mask, gen_segformer_mask))
     return ious
     

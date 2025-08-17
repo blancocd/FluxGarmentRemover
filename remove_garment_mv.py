@@ -215,7 +215,8 @@ def remove_garments(dataset_dir, out_dir, garment_data_json, index,
     initial_anchor_idx = scan_dict['anchor_idx']
     img_dir = os.path.join(scan_dir, 'images')
     img_fns = sorted([f for f in os.listdir(img_dir) if f.endswith('.png') and f.startswith('train')])
-    indices_list, indices_to_gen_save_flag_list = get_sweeping_anchors_indices(initial_anchor_idx, len(img_fns))
+    # indices_list, indices_to_gen_save_flag_list = get_sweeping_anchors_indices(initial_anchor_idx, len(img_fns))
+    indices_list, indices_to_gen_save_flag_list = get_equally_spaced_anchors_indices(initial_anchor_idx, len(img_fns), 4)
     
     # Removing outer garment
     garment_type = 'outer'
@@ -224,8 +225,6 @@ def remove_garments(dataset_dir, out_dir, garment_data_json, index,
         flux_kontext_args = scan_dict['flux_kontext_args'][garment_type]
         flux_fill_args = scan_dict['flux_fill_args'][garment_type]
 
-        # num_anchors = 4
-        # indices_list, indices_to_gen_save_flag_list = get_equally_spaced_anchors_indices(initial_anchor_idx, num_views, num_anchors)
         remove_garment_anchors(scan_dir, scan_noouter_dir, 'upper', initial_anchor_idx, indices_list, 
                             indices_to_gen_save_flag_list, flux_kontext_args, flux_fill_args, 
                             verbose=True, dil_its=outer_dil_its, ero_its=outer_ero_its)
@@ -238,8 +237,6 @@ def remove_garments(dataset_dir, out_dir, garment_data_json, index,
     flux_kontext_args = scan_dict['flux_kontext_args'][garment_type]
     flux_fill_args = scan_dict['flux_fill_args'][garment_type]
 
-    # num_anchors = 4
-    # indices_list, indices_to_gen_save_flag_list = get_equally_spaced_anchors_indices(initial_anchor_idx, num_views, num_anchors)
     remove_garment_anchors(scan_noouter_dir, scan_noinner_dir, garment_type, initial_anchor_idx, indices_list, 
                         indices_to_gen_save_flag_list, flux_kontext_args, flux_fill_args, 
                         verbose=True, dil_its=inner_dil_its, ero_its=inner_ero_its)

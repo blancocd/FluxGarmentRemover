@@ -133,7 +133,7 @@ def main(gen_method_dir, garment_data_json, indices_step_sample):
                     results_dict[scan_name]['outer']["removal_quality"].append(int(match.group()))
                 else:
                     results_dict[scan_name]['outer']["removal_quality"].append(-1)
-                results_dict[scan_name]['outer']["removal_quality_full_answer"].append('outer_removal_quality_decoded')
+                results_dict[scan_name]['outer']["removal_quality_full_answer"].append(outer_removal_quality_decoded)
 
             # Rating inner garment removal
             gen_remove_inner_img_path = os.path.join(gen_scan_dir, 'inner', 'images', img_fn)

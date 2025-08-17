@@ -80,39 +80,44 @@ def load_and_process_data(file_path):
     
     return df
 
-def analyze_and_plot(df, group_by_col, analysis_name):
+def analyze_and_plot(df, group_by_col, analysis_name, generate_bar_plots=True):
     """
-    Analyzes data by grouping, prints a table, and generates histograms for each metric.
+    Analyzes data by grouping, prints a table, generates bar plots, and returns the averaged DataFrame.
     """
     print(f"\n--- Averages per {analysis_name} ---\n")
     
     # Calculate mean, ignoring NaN values and non-numeric columns
-    # THIS LINE IS THE FIX
     avg_df = df.groupby(group_by_col).mean(numeric_only=True)
 
     # Save and print the table
-    table_path = os.path.join(OUTPUT_DIR, f'table_avg_per_{analysis_name}.txt')
-    avg_df.round(3).to_csv(table_path.replace('.txt', '.csv'))
+    table_path = os.path.join(OUTPUT_DIR, f'table_avg_per_{analysis_name}.csv')
+    avg_df.round(3).to_csv(table_path)
     print(f"Table of averages per {analysis_name}:")
     print(avg_df.round(3).to_string())
-    print(f"\nFull table saved to {table_path.replace('.txt', '.csv')}")
+    print(f"\nFull table saved to {table_path}")
 
-    # Generate and save histograms
-    print(f"Generating histograms for averages per {analysis_name}...")
-    for column in avg_df.columns:
-        plt.figure(figsize=(10, 6))
-        avg_df[column].hist(bins=15)
-        plt.title(f'Distribution of Average {column}\n(per {analysis_name})')
-        plt.xlabel(f'Average {column}')
-        plt.ylabel('Frequency')
-        plt.tight_layout()
-        
-        # Sanitize filename
-        safe_col_name = "".join(c for c in column if c.isalnum() or c in (' ', '-', '_')).rstrip()
-        hist_path = os.path.join(OUTPUT_DIR, f'hist_avg_{safe_col_name}_per_{analysis_name}.png')
-        plt.savefig(hist_path)
-        plt.close()
-    print("Histograms saved.")
+    # Generate and save bar plots
+    if generate_bar_plots:
+        print(f"Generating bar plots for averages per {analysis_name}...")
+        for column in avg_df.columns:
+            if 'IOU' in column or 'index' in column:
+                continue
+            plt.figure(figsize=(10, 6))
+            avg_df[column].plot(kind='bar')
+            plt.title(f'Average {column} per {analysis_name}')
+            plt.xlabel(analysis_name)
+            plt.ylabel(f'Average {column}')
+            plt.tight_layout()
+            
+            # Sanitize filename
+            safe_col_name = "".join(c for c in column if c.isalnum() or c in (' ', '-', '_')).rstrip()
+            bar_path = os.path.join(OUTPUT_DIR, f'bar_avg_{safe_col_name}_per_{analysis_name}.png')
+            plt.savefig(bar_path)
+            plt.close()
+        print("Bar plots saved.")
+    
+    # *** CHANGE: Return the averaged dataframe for further use ***
+    return avg_df
 
 
 def analyze_overall_metrics(df):
@@ -130,43 +135,30 @@ def analyze_overall_metrics(df):
     print(f"\nOverall averages table saved to {table_path}")
     
 
-def create_bonus_plots(df):
+def generate_boxplots(df, suffix):
     """
-    Creates additional insightful visualizations like IoU breakdown and metric distributions.
+    Generates box plots for the main metrics from the given DataFrame.
+    The suffix is used to create a descriptive title and filename.
     """
-    print("\n--- Generating Bonus Visualizations ---\n")
-
-    # 1. Bar chart for IoU breakdown
-    iou_cols = [col for col in df.columns if 'IOU' in col]
-    if iou_cols:
-        iou_avg = df[iou_cols].mean()
-        
-        plt.figure(figsize=(14, 8))
-        iou_avg.plot(kind='bar', color=['skyblue', 'lightgreen'])
-        plt.title('Overall Average IoU by Category', fontsize=16)
-        plt.ylabel('Average IoU Score', fontsize=12)
-        plt.xticks(rotation=45, ha='right')
-        plt.grid(axis='y', linestyle='--', alpha=0.7)
-        plt.ylim(0, 1) # IoU is between 0 and 1
-        plt.tight_layout()
-        
-        bonus_plot_path = os.path.join(OUTPUT_DIR, 'bonus_plot_iou_breakdown.png')
-        plt.savefig(bonus_plot_path)
-        plt.close()
-        print(f"IoU breakdown plot saved to {bonus_plot_path}")
-
-    # 2. Box plots for main metrics
+    print(f"\n--- Generating Box Plots for {suffix} ---\n")
     main_metrics = list(METRIC_MAP.values())
-    if main_metrics:
-        plt.figure(figsize=(20, 12))
-        df[main_metrics].plot(kind='box', subplots=True, layout=(2, 3), figsize=(18, 10), sharey=False)
-        plt.suptitle('Distribution of Core Metrics Across All Data Points', fontsize=18, y=1.02)
-        plt.tight_layout()
-        
-        bonus_plot_path = os.path.join(OUTPUT_DIR, 'bonus_plot_metric_distributions.png')
-        plt.savefig(bonus_plot_path)
-        plt.close()
-        print(f"Metric distribution box plots saved to {bonus_plot_path}")
+    
+    if not main_metrics:
+        print("No main metrics defined, skipping box plots.")
+        return
+
+    plt.figure(figsize=(20, 12))
+    # Use the DataFrame passed as an argument
+    df[main_metrics].plot(kind='box', subplots=True, layout=(2, 3), figsize=(18, 10), sharey=False)
+    
+    # Update the title to be more descriptive based on the suffix
+    plt.suptitle(f'Distribution of Core Metrics ({suffix})', fontsize=18, y=1.02)
+    plt.tight_layout()
+    
+    plot_path = os.path.join(OUTPUT_DIR, f'boxplot_metric_distributions_{suffix.replace(" ", "_").lower()}.png')
+    plt.savefig(plot_path)
+    plt.close()
+    print(f"Metric distribution box plots saved to {plot_path}")
 
 
 if __name__ == "__main__":
@@ -177,25 +169,25 @@ if __name__ == "__main__":
 
     JSON_FILE = sys.argv[1]
     method = os.path.basename(JSON_FILE)[:len('sweeping_anchors_1_1_2_0')]
-    OUTPUT_DIR = f"./plots/{method}"
+    OUTPUT_DIR = f"./plots_psnr_ssim_ious/{method}"
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     # Load and process data
     full_df = load_and_process_data(JSON_FILE)
+    full_df.round(4).to_csv(os.path.join(OUTPUT_DIR, 'full.csv'))
     print("Data loaded and processed successfully.")
 
     # --- Run Analyses ---
 
     # 1. Averages per Index (Camera View)
-    analyze_and_plot(full_df, 'index', 'Index')
+    avg_per_index_df = analyze_and_plot(full_df, 'index', 'Index')
+    generate_boxplots(avg_per_index_df, "Per Index Averages")
 
-    # 2. Averages per Scan
-    analyze_and_plot(full_df, 'scan', 'Scan')
+    # 2. Averages per Scan, and store the resulting table for the box plot
+    avg_per_scan_df = analyze_and_plot(full_df, 'scan', 'Scan', generate_bar_plots=False)
+    generate_boxplots(avg_per_scan_df, "Per Scan Averages")
 
     # 3. Overall Averages
     analyze_overall_metrics(full_df)
-
-    # 4. Bonus Plots
-    create_bonus_plots(full_df)
 
     print(f"\n✅ Analysis complete. All outputs are saved in the '{OUTPUT_DIR}' directory.")
