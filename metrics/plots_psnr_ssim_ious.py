@@ -12,17 +12,17 @@ OUTPUT_DIR = 'plots_and_tables'
 # Mapping for clear labeling in plots and tables
 METRIC_MAP = {
     'ssim_inner': 'Inner Garment Avg. SSIM',
-    'ssim_nongen_remove_outer': 'SSIM (Human Region, Outer Removed)',
-    'ssim_nongen_remove_inner': 'SSIM (Human Region, Inner Removed)',
     'psnr_inner': 'Inner Garment Avg. PSNR',
-    'psnr_nongen_remove_outer': 'PSNR (Human Region, Outer Removed)',
-    'psnr_nongen_remove_inner': 'PSNR (Human Region, Inner Removed)',
+    'psnr_nongen_remove_outer': 'PSNR (Unmodified region - Outer Removal)',
+    'ssim_nongen_remove_outer': 'SSIM (Unmodified region - Outer Removal)',
+    'psnr_nongen_remove_inner': 'PSNR (Unmodified region - Inner Removal)',
+    'ssim_nongen_remove_inner': 'SSIM (Unmodified region - Inner Removal)',
 }
 
-IOU_LABELS = ['Skin', 'Hair', 'Shoes', 'Inner Garment', 'Lower Garment', 'Outer Garment']
+IOU_LABELS = ['Hair', 'Shoes']
 IOU_MAP = {
-    'ious_orig-remove_outer': f"IOU (Outer Removed)",
-    'ious_orig-remove_inner': f"IOU (Inner Removed)",
+    'ious_orig-remove_outer': f"IOU (Outer Removal)",
+    'ious_orig-remove_inner': f"IOU (Inner Removal)",
 }
 
 def load_and_process_data(file_path):
@@ -57,25 +57,23 @@ def load_and_process_data(file_path):
             for key, name_prefix in IOU_MAP.items():
                 if key in scan_data and scan_data[key]:
                     try:
-                        iou_values = scan_data[key][i]
+                        iou_values = scan_data[key][i][1:3]
+                        val = 0
                         for j, label in enumerate(IOU_LABELS):
-                            col_name = f"{name_prefix} - {label}"
-                            val = float(iou_values[j])
-                            row[col_name] = val if val != -1.0 else np.nan
+                            val += float(iou_values[j])/2
+                        row[name_prefix] = val if val != -1.0 else np.nan
                     except (IndexError, TypeError):
                         # Ensure all columns are created even if data is missing
-                        for label in IOU_LABELS:
-                            row[f"{name_prefix} - {label}"] = np.nan
+                        row[name_prefix] = np.nan
                 else:
-                    for label in IOU_LABELS:
-                        row[f"{name_prefix} - {label}"] = np.nan
+                    row[name_prefix] = np.nan
             
             processed_rows.append(row)
 
     df = pd.DataFrame(processed_rows)
     # Reorder columns for logical presentation
     base_metrics = list(METRIC_MAP.values())
-    iou_metrics = [f"{prefix} - {label}" for prefix in IOU_MAP.values() for label in IOU_LABELS]
+    iou_metrics = [prefix for prefix in IOU_MAP.values()]
     df = df[['scan', 'index'] + base_metrics + iou_metrics]
     
     return df
@@ -168,7 +166,10 @@ if __name__ == "__main__":
         sys.exit(1)
 
     JSON_FILE = sys.argv[1]
-    method = os.path.basename(JSON_FILE)[:len('sweeping_anchors_1_1_2_0')]
+    if 'sweeping' in JSON_FILE:
+        method = os.path.basename(JSON_FILE)[:len('sweeping_anchors_1_1_2_0')]
+    elif 'equally' in JSON_FILE:
+        method = os.path.basename(JSON_FILE)[:len('equallyspaced_anchors_3_2_3_2_5')]
     OUTPUT_DIR = f"./plots_psnr_ssim_ious/{method}"
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 

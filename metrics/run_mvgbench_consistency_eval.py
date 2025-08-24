@@ -23,7 +23,7 @@ def prepare_data(dataset_dir, gen_dir, scan_name, method):
 
         # Separate frames into odd and even lists
         gen_frames = []
-        for i, frame in enumerate(transforms["frames"]):
+        for frame in enumerate(transforms["frames"]):
             # Extract the image number from the file path
             num_str = os.path.basename(frame["image_path"]).split("_")[-1]
             img_num_transforms = int(num_str)
@@ -34,7 +34,7 @@ def prepare_data(dataset_dir, gen_dir, scan_name, method):
             if not os.path.exists(original_img_path):
                 continue
             
-            frame["file_path"] = f"./images/train_{i:04d}"
+            frame["file_path"] = f"./images/train_{img_num_transforms:04d}"
             gen_frames.append(frame)
 
         for i, frame in enumerate(gen_frames):
@@ -152,6 +152,8 @@ def main():
     if not args.skip_mvfit:
         run_mvfit(args.mvg_bench_dir, args.gen_dir, scan_name, method)
     if not args.skip_eval:
+        if args.scan_index != 0:
+            return
         run_evaluation(args.mvg_bench_dir, method)
 
 if __name__ == "__main__":
